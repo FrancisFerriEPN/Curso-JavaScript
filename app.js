@@ -1,3 +1,4 @@
-let nombre = prompt("Cual es tu nombre");
-let edad = prompt("Cual es tu edad");
-document.getElementById("app").innerHTML = `Bienvido ${nombre} de ${edad} años`;
+console.log(2+2);
+console.log("Esto es un simulacro");
+console.log(true);
+console.log('ID: '+20);
