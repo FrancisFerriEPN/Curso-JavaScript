@@ -1,38 +1,46 @@
-let aprendiendo = "Arendiendo: ", tecnologia = 'JavaScript';
-console.log(aprendiendo+ "- "+tecnologia);
-// o
-// se puede espaciar directo e esta
-console.log(`${aprendiendo} ${tecnologia}`);
-// atributos son con puntos
-console.log(tecnologia.length);
-// No guarda la concatenacion
-tecnologia.concat(" Es genial");
-console.log(tecnologia);
-// Concatena directamente
-console.log(tecnologia.concat(" ","Es genial", " y bien chevere"));
-// UpperCase
-console.log(tecnologia.toUpperCase());
-let gato = "       gato vaca 1              ";
-console.log(gato.trim());
-// No te olvides que esto sirve para let 
-let mensaje = "Aprendiendo JavaScript, CSS, HTML, para ser Frontend";
-// Devuelve el indie en el cual comienza
-console.log(mensaje.indexOf("JavaScript"));
-// devuelve -1 si no enuentra el valor (exactamentte -1 no false o null)
+const numero1 = 30, numero2 = 20, numero3 = 12.123, numero4 = .0534, numero5 = -4;
 
-console.log(mensaje.indexOf("Php"));
-// Se especifica limites
-console.log(mensaje.substr(0,11));
-// Se especifica el inicio
-console.log(mensaje.substr(12));
-// Slice
-console.log(mensaje.slice(-30));
-console.log(mensaje.substr(-30));
-//slice y substr funcionan exactamente igual
-console.log(mensaje.split(" "));
-// replace 
-console.log(mensaje.replace("CSS", "PHP"))
-// Include
-console.log(mensaje.includes("HTML"));
-tecnologia = tecnologia + " ";
-console.log(tecnologia.repeat(10));
+let resultado;
+//Suma
+resultado = numero1 + numero2;
+// Resta
+resultado = numero1 - numero2;
+// Multiplicacion
+resultado = numero1 * numero2;
+resultado = numero1 * 2;
+// Division
+resultado = numero1 / numero2;
+// Modulo
+resultado = numero1 % numero2;
+// Pi
+resultado = Math.PI
+// Redondear
+resultado = Math.round(2.5);// Sube a 3
+resultado = Math.round(2.4);// Baja a 2
+// Techo y suelo
+resultado = Math.ceil(2.2);
+resultado = Math.floor(2.2);
+// Raiz cuadarada
+resultado = Math.sqrt(144);
+// Valor absoluto
+resultado = Math.abs(numero5);
+// Potencia
+resultado = Math.pow(8,2);
+// Minimo
+resultado = Math.min(8,6,7,6,7,8,30,9,2,5,6,7,8,9);
+// Maximo
+resultado = Math.max(8,6,7,6,7,8,30,9,2,5,6,7,8,9);
+// Aleatorio
+resultado = Math.random()*30;
+resultado = Math.round(Math.random()*30);
+
+// Igual que las matematicas de secundaria
+resultado = 10 + 20 * 5;
+let puntaje = 10;
+puntaje++;
+++puntaje;
+--puntaje;
+puntaje--;
+puntaje += 3;
+puntaje *= 2;
+console.log(puntaje);
