@@ -1,23 +1,31 @@
-let cp;
-cp = 90123
-cp = String(cp);
-console.log(typeof cp);
-console.log(cp.length);
+const producto1 = "pizza",
+    precio1 = 30, 
+    producto2 = "hambuerguesa",
+    precio2 = 40;
+let html;
+/*
+html = '<ul>' +
+        '<li>Orden: ' + producto1 + '</li>' +
+        '<li>Precio:  '+ precio1 + '</li>' +
+        '<li>Orden: ' + producto2 + '</li>' +
+        '<li>Precio:  '+ precio2 + '</li>' +
+        '<li>Total:  '+ (precio1 + precio2 +) '</li>' +
+        '</ul>';
 
-let dato;
-dato = 4 + 4;
-dato = '4' + '4';
-console.log(dato);
-console.log(dato.length);
+console.log(html);
+*/
 
-// Con arreglos pone tdo en una sola string
-dato = String([1,2,3]);
-console.log(dato); // "1,2,3"
+html = `
+        <ul>
+        <li>Producto: ${producto1}</li>
+        <li>Precio: ${precio1}</li>
+        <li>Producto: ${producto2}</li>
+        <li>Precio: ${precio2}</li>
+        <li>Total: ${total(precio1, precio2)}</li>
+        </ul>
+        `
 
-// toString
-dato = 20;
-dato = dato.toString();
-console.log(dato);
-dato = [1,2,3];
-dato = dato.toString();// "1,2,3"
-console.log(dato);
+function total(precio1, precio2){
+    return precio1 + precio2;
+}
+document.getElementById('app').innerHTML = html;
