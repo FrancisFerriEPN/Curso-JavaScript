@@ -1,32 +1,17 @@
-// Crear objetos
-// Para crear un objeto se utiliza llaves
-const persona = {
-    nombre : "Miguel",
-    apellido: "Martines",
-    profesion: "diseñadr grafico",
-    email: "miguel.martinez@gmail.com",
-    edad: 20,
-    musica: ["Thrash","Rock","Grunch"],
-    // Objeto dentr de tro objeto
-    hogar : {
-        ciudad: "Quito",
-        pais: "Ecuador"
-    },
-    // Tiene la siguente manera para crear metodos
-    nacimiento : function() {
-        // Se utiliza la palabra this para referirse a los atributs del objeto
-            return new Date().getFullYear() - this.edad;
-    }
-};
-console.log(persona);
-console.log(persona.apellido);
-console.log(persona.edad);
-console.log(persona.musica[1]);
-persona.musica.push('Alternativo');
-console.log(persona.musica);
-console.log(persona.hogar.ciudad);
+// Arregl de bjets
+const autos = [
+    {modelo :"Camaro", motor : 3.5},
+    {modelo :"Yaris", motor : 4.0},
+    {modelo :"Spark", motor : 4.2}
+];
+console.log(autos);
+console.log(autos[1].modelo);
 
-// Existe ottra frma de acceder aos valores del objeto, n tan recomendada
-console.log(persona['hogar']["pais"]);
-// No te olvides de los parentesis
-console.log(persona.nacimiento());
+console.log(autos.length);
+ for(let i=0; i<autos.length; i++){
+     //console.log(autos[i]);
+     console.log(`${autos[i].modelo} ${autos[i].motor}`)
+ }
+ autos[0].modelo = 'Audi';
+ console.log(autos);
+ // Con const no se puede vlver a asigar todo, pero con let si, ambos se puede reasignar valor por valor
