@@ -1,58 +1,22 @@
-const metodo_pago = "efectivo";
-switch (metodo_pago){
-    case 'efectivo':
-        console.log(`EL usuario pago con ${metodo_pago}`);
-        break;
-    case 'cheque':
-        console.log(`EL usuario pago con ${metodo_pago}`);
-        break;
-    case 'tarjeta':
-        console.log(`EL usuario pago con ${metodo_pago}`);
-        break;
-    default:
-        console.log("Metodo de pago no soporado");
+// For loop
+for (let i = 0; i <= 10;i++){   
+    if(i == 5){
+        console.log("Voy en el 5");
+        continue;
+        //break;
+    }
+    console.log(`Numero: ${i}`);
 }
 
-
-let mes;
-
-switch(new Date().getMonth()){
-    case 0:
-        mes = "Enero";
-        break;
-    case 1:
-        mes = "Febrero";
-        break;
-    case 2:
-        mes = "Marzo";
-        break;
-    case 3:
-        mes = "Abril";
-        break;
-    case 4:
-        mes = "Mayo";
-        break;
-    case 5:
-        mes = "Junio";
-        break;
-    case 6:
-        mes = "Julio";
-        break;
-    case 7:
-        mes = "Agosto";
-        break;
-    case 8:
-        mes = "Septiembre";
-        break;
-    case 9:
-        mes = "Octubre";
-        break;
-    case 10:
-        mes = "Noviembre";
-        break;
-    case 11:
-        mes = "Diciembre";
-        break;
+for (let i = 0; i <= 10;i++){   
+    if(i % 2 == 0){
+        console.log(`EL numero ${i} es par`);
+    }else{
+        console.log(`EL numero ${i} es impar`);
+    }
 }
 
-console.log(`Este mes es ${mes}`);
+const arreglo_productos = ['Camisa', 'Boleto', "Guitarra", "Disco"];
+for(let i = 0; i < arreglo_productos.length; i++){
+    console.log(`Tu producto ${arreglo_productos[i]} fue agregado`);
+}
