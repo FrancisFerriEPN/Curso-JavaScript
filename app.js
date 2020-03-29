@@ -1,19 +1,40 @@
-const dia_hoy = new Date();
-console.log(dia_hoy);
+const edad = 19;
+if(edad != 18){
+    console.log("Si puedes entrar");
+}else {
+    console.log("No puedes entrar");
+}
 
-// Fecha en especifico Mes, Dia, Año
-let birthday_helena_2017 = new Date("12-24-2017");
-console.log(birthday_helena_2017);
-let valor 
 
-// TE regesa en enteros desde el 0
-valor = dia_hoy.getMonth();
-valor = dia_hoy.getDay();
-valor = dia_hoy.getFullYear();
-valor = dia_hoy.getMinutes();
-valor = dia_hoy.getHours();
-// Devuelve los milisegundos transcurridos desde 1970S
-valor = dia_hoy.getTime();
-valor = dia_hoy.setFullYear(2016);
-valor = dia_hoy.getFullYear();
-console.log(valor);
+// Comprobar que una variable tiene un valor
+
+// Si es undefined  nulo va a decir que no hay puntaje
+let puntaje;
+if(puntaje) {
+    console.log(`EL puntaje fue de ${puntaje}`);
+} else {
+    console.log(`No hay puntaje`)
+}
+//Esto permitte compprobar formularios
+console.log(puntaje);
+
+if (typeof puntaje != 'undefined'){
+    console.log(`EL puntaje es de ${puntaje}`)
+}else {
+    console.log(`No hay puntaje`);
+}
+
+let efectivo = 500;
+let total_carrito =300;
+if(efectivo >= total_carrito){
+    console.log("Pago correcto")
+}else {
+    console.log(`No dispone de fonds suficientes`)
+}
+
+// Tambien se puede quitar las llaves cuando es sl una instruccion la que sigue
+if(efectivo >= total_carrito)
+    console.log("Pago correcto");
+else 
+    console.log(`No dispone de fonds suficientes`);
+// Aun asi siemmpre utiliza llaves
