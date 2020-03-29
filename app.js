@@ -1,14 +1,58 @@
-// Operador || y &&
-let efectico = 300,
-credito =300,
-totalCarrito = 500;
-disponible = efectico + credito;
-if(totalCarrito <efectico || totalCarrito < credito || totalCarrito <= disponible){
-    console.log('Puedo pagar');
-}else {
-    console.log('No puedo pagar');
+const metodo_pago = "efectivo";
+switch (metodo_pago){
+    case 'efectivo':
+        console.log(`EL usuario pago con ${metodo_pago}`);
+        break;
+    case 'cheque':
+        console.log(`EL usuario pago con ${metodo_pago}`);
+        break;
+    case 'tarjeta':
+        console.log(`EL usuario pago con ${metodo_pago}`);
+        break;
+    default:
+        console.log("Metodo de pago no soporado");
 }
 
-// Ternario
-let logueado = true;
-console.log(logueado === true ? 'Si se logueo': 'No se logueo');
+
+let mes;
+
+switch(new Date().getMonth()){
+    case 0:
+        mes = "Enero";
+        break;
+    case 1:
+        mes = "Febrero";
+        break;
+    case 2:
+        mes = "Marzo";
+        break;
+    case 3:
+        mes = "Abril";
+        break;
+    case 4:
+        mes = "Mayo";
+        break;
+    case 5:
+        mes = "Junio";
+        break;
+    case 6:
+        mes = "Julio";
+        break;
+    case 7:
+        mes = "Agosto";
+        break;
+    case 8:
+        mes = "Septiembre";
+        break;
+    case 9:
+        mes = "Octubre";
+        break;
+    case 10:
+        mes = "Noviembre";
+        break;
+    case 11:
+        mes = "Diciembre";
+        break;
+}
+
+console.log(`Este mes es ${mes}`);
