@@ -1,30 +1,20 @@
-// Funciones que se declaran e invcar inmediatamente
-// IIFE
-// (funcion)();
-(function(){
-    console.log('Creand un IIFE');
-})();
-
-
-(function(tecnolgia){
-    console.log(`Aprendiendo ${tecnolgia}`);
-})("JavaScript");
-
-// Metodos de propiedad
-// Metdo = funcion dentro de un bjeto
-const musica = {
-    reproducir : function(id) {
-        console.log(`Reproduciendo cancion ID ${id}`);
-    },
-    pausar: function(){
-        console.log("Pause a la musica");
-    }
+//EN JAvaScript no importa donde llames a la funcionn puede ser antes o desues de declararla
+obtener_clientes();
+function obtener_clientes(){
+    console.log('Descargand...');
+    // SIrve para pner un temporizador a  la ejecucion
+    setTimeout(function(){
+        console.log("Completo");
+    },3000);    
 }
-musica.reproducir(30);
-musica.pausar();
 
-// Los metdos tambien pueden gruardarse o crearse fuera del objeto
-musica.borrar = function(id){
-    console.log(`Se borro la cancion con el ID ${id}`)
+obtener_clientes();
+
+try {
+    algo();
+} catch (error){
+    console.log(error);
+    
+} finally {
+    console.log("No me importa ejecuta de tdos modos")
 }
-musica.borrar(2);
