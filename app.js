@@ -1,20 +1,19 @@
-//EN JAvaScript no importa donde llames a la funcionn puede ser antes o desues de declararla
-obtener_clientes();
-function obtener_clientes(){
-    console.log('Descargand...');
-    // SIrve para pner un temporizador a  la ejecucion
-    setTimeout(function(){
-        console.log("Completo");
-    },3000);    
-}
+const dia_hoy = new Date();
+console.log(dia_hoy);
 
-obtener_clientes();
+// Fecha en especifico Mes, Dia, Año
+let birthday_helena_2017 = new Date("12-24-2017");
+console.log(birthday_helena_2017);
+let valor 
 
-try {
-    algo();
-} catch (error){
-    console.log(error);
-    
-} finally {
-    console.log("No me importa ejecuta de tdos modos")
-}
+// TE regesa en enteros desde el 0
+valor = dia_hoy.getMonth();
+valor = dia_hoy.getDay();
+valor = dia_hoy.getFullYear();
+valor = dia_hoy.getMinutes();
+valor = dia_hoy.getHours();
+// Devuelve los milisegundos transcurridos desde 1970S
+valor = dia_hoy.getTime();
+valor = dia_hoy.setFullYear(2016);
+valor = dia_hoy.getFullYear();
+console.log(valor);
