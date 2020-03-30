@@ -1,22 +1,25 @@
-// For loop
-for (let i = 0; i <= 10;i++){   
-    if(i == 5){
-        console.log("Voy en el 5");
+let i = 0;
+while (i < 10){
+    if (i ==5){
+        console.log('Cinco');
+        i++;
         continue;
         //break;
     }
+    console.log(`Mumero: ${i}`);
+    i++;
+}
+
+const musica = ['cancion1', 'cancion2', 'cancion3'];
+i = 0;
+while (i<musica.length){
+    console.log(`Reproduciendo la cancion ${musica[i]}`);
+    i++;
+}
+
+// ntra almens una vez
+i = 0;
+do{
     console.log(`Numero: ${i}`);
-}
-
-for (let i = 0; i <= 10;i++){   
-    if(i % 2 == 0){
-        console.log(`EL numero ${i} es par`);
-    }else{
-        console.log(`EL numero ${i} es impar`);
-    }
-}
-
-const arreglo_productos = ['Camisa', 'Boleto', "Guitarra", "Disco"];
-for(let i = 0; i < arreglo_productos.length; i++){
-    console.log(`Tu producto ${arreglo_productos[i]} fue agregado`);
-}
+    i++;
+}while(i < 10);
