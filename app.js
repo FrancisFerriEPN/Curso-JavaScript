@@ -1,53 +1,73 @@
-// Recorrrer un arreglo con for each
-const pendientes = ['Tarea', 'Comer', 'proyecto', 'Aprender JavaScript'];
+const cuidades = ["Londres","New York", "Madrid", "Paris"];
+const ordenes = new Set([123,231,131,102]);
+// Se crea un mapa
+const datos = new Map();
+// Se agregan caracteristicas
+datos.set('nombre','Francis');
+datos.set('ocupacion','Estudiante');
 
-// For normal
-for(let i = 0; i < pendientes.length; i++){
-    console.log(pendientes[i]);
+// Entries iterador
+for(let entrada of cuidades.entries()){
+    console.log(entrada);
+}
+
+for (let orden of ordenes.entries()){
+    console.log(orden);
+}
+
+// entries para Map
+for (let entrada of datos.entries()){
+    console.log(entrada);
+}
+
+// Valuues iterador
+for(let entrada of cuidades.values()){
+    console.log(entrada);
+}
+
+for (let orden of ordenes.values()){
+    console.log(orden);
+}
+
+// Values para Map
+for (let entrada of datos.values()){
+    console.log(entrada);
+}
+// KEYS iterator
+// Valuues iterador
+for(let entrada of cuidades.keys()){
+    console.log(entrada);
+}
+
+for (let orden of ordenes.keys()){
+    console.log(orden);
+}
+
+// Keys para Map
+for (let entrada of datos.keys()){
+    console.log(entrada);
 }
 
 
-pendientes.forEach(element => {
-    console.log(`Realizando ${element}`);
-});
+// VALOR POR DEFECTO
+// EL valor por defecto en los iteradores es values
+for(let entrada of cuidades){
+    console.log(entrada);
+}
+// Excepto cuando es llave valor (objetos) ahi devuelve las entries
+for (let entrada of datos){
+    console.log(entrada);
+}
 
+const mensaje = "Aprendiendo JavaScript";
 
-console.log("For each propio");
-pendientes.forEach( function(pendiente){
-    console.log(`${pendiente}`);
-});
+for (let letra of mensaje){
+    console.log(letra);
+}
+//
 
-// Puedes anexar el indice directamente a la funcion
-console.log("For each propio");
-pendientes.forEach( function(pendiente, index){
-    console.log(`${pendiente} en la posicion ${index}`);
-});
-
-// Map para recorrer un arreglo de objetos
-const carrito = [
-    {id: 1, producto:"Libro"},
-    {id: 2, producto:"Camisa"},
-    {id: 3, producto:"Guitarra"},
-    {id: 4, producto:"Disco"},
-];
-
-// Obtiene todos los nombres e productos en carrito
-const nombre_producto = carrito.map(function(carrito){
-    return carrito.producto;
-});
-console.log(nombre_producto);
-
-// Recorrer objeto usasndo for
-const automovil = {
-    modelo: "camaro",
-    motor: "6.1",
-    marca:"chevrolet"
-};
-
-// 
-console.log(automovil);
- for (let caracterstica in automovil){
-     console.log(`${caracterstica} : ${automovil[caracterstica]}`)
- }
-
- 
+const enlaces = document.getElementsByTagName('a');
+for(let enlace of enlaces){
+    //console.log(enlace);
+    console.log(enlace.href);
+}
