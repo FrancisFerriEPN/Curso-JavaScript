@@ -1,73 +1,41 @@
-const cuidades = ["Londres","New York", "Madrid", "Paris"];
-const ordenes = new Set([123,231,131,102]);
-// Se crea un mapa
-const datos = new Map();
-// Se agregan caracteristicas
-datos.set('nombre','Francis');
-datos.set('ocupacion','Estudiante');
+let altura,
+anchura;
 
-// Entries iterador
-for(let entrada of cuidades.entries()){
-    console.log(entrada);
-}
+// Es mejor hacer los ajustes de pantalla con CSS no utilizando el lenguaje de programacion. Solo usa codigo en casos muy especiales
+altura = window.innerHeight;
+anchura = window.innerWidth;
 
-for (let orden of ordenes.entries()){
-    console.log(orden);
-}
+//altura = window.outerHeight;
+//anchura = window.outerWidth;
+console.log(altura);
+console.log(anchura);
 
-// entries para Map
-for (let entrada of datos.entries()){
-    console.log(entrada);
-}
+let ubicacion;
+// Devuelve la url
+ubicacion= window.location;
+console.log(ubicacion.port);
+console.log(ubicacion.protocol);
+//http://127.0.0.1:5500/?s=busqueda
+console.log(ubicacion.search);
 
-// Valuues iterador
-for(let entrada of cuidades.values()){
-    console.log(entrada);
-}
+// Te regresa a paginas anteriores 2 atras
+window.history.go(-2);
 
-for (let orden of ordenes.values()){
-    console.log(orden);
-}
+// 
+ubicacion = window.navigator;
+ubicacion = window.navigator.appName;
+ubicacion = window.navigator.language;
+console.log(ubicacion);
+// Se puede redireccionar a otra pagina
+window.location.href = "http://twitter.com";
 
-// Values para Map
-for (let entrada of datos.values()){
-    console.log(entrada);
-}
-// KEYS iterator
-// Valuues iterador
-for(let entrada of cuidades.keys()){
-    console.log(entrada);
-}
+// Prompt
+const nombre = prompt();
+console.log(`Bienvenido ${nombre}`);
 
-for (let orden of ordenes.keys()){
-    console.log(orden);
-}
-
-// Keys para Map
-for (let entrada of datos.keys()){
-    console.log(entrada);
-}
-
-
-// VALOR POR DEFECTO
-// EL valor por defecto en los iteradores es values
-for(let entrada of cuidades){
-    console.log(entrada);
-}
-// Excepto cuando es llave valor (objetos) ahi devuelve las entries
-for (let entrada of datos){
-    console.log(entrada);
-}
-
-const mensaje = "Aprendiendo JavaScript";
-
-for (let letra of mensaje){
-    console.log(letra);
-}
-//
-
-const enlaces = document.getElementsByTagName('a');
-for(let enlace of enlaces){
-    //console.log(enlace);
-    console.log(enlace.href);
+// Confirm
+if(confirm("ELiminar ?")){
+    console.log("Su articulo ha sido eliminado");
+}else{
+    console.log("Operacion cancelada");
 }
