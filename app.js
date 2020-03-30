@@ -1,41 +1,28 @@
-let altura,
-anchura;
+var a ='a';
+let b = 'b';
+const c = 'c';
 
-// Es mejor hacer los ajustes de pantalla con CSS no utilizando el lenguaje de programacion. Solo usa codigo en casos muy especiales
-altura = window.innerHeight;
-anchura = window.innerWidth;
+// Scope en la funcion 
+function funcion_Scope() {
+    var a = 'A';
+    let b = 'B';
+    const c = 'C';
+    console.log('FUNCION: '+ a,b,c);
 
-//altura = window.outerHeight;
-//anchura = window.outerWidth;
-console.log(altura);
-console.log(anchura);
-
-let ubicacion;
-// Devuelve la url
-ubicacion= window.location;
-console.log(ubicacion.port);
-console.log(ubicacion.protocol);
-//http://127.0.0.1:5500/?s=busqueda
-console.log(ubicacion.search);
-
-// Te regresa a paginas anteriores 2 atras
-window.history.go(-2);
-
-// 
-ubicacion = window.navigator;
-ubicacion = window.navigator.appName;
-ubicacion = window.navigator.language;
-console.log(ubicacion);
-// Se puede redireccionar a otra pagina
-window.location.href = "http://twitter.com";
-
-// Prompt
-const nombre = prompt();
-console.log(`Bienvenido ${nombre}`);
-
-// Confirm
-if(confirm("ELiminar ?")){
-    console.log("Su articulo ha sido eliminado");
-}else{
-    console.log("Operacion cancelada");
 }
+funcion_Scope();
+// Scope en bloque
+if(true){
+    var a = 'AA'; // Se resscibe
+    let b = 'BB';
+    const c = 'CC';
+    console.log('BLOQUE: '+ a,b,c);
+}
+// for
+for(var a = 0; a <3; a++){
+    console.log(a);
+}
+// Se puede imprmir directo asi
+console.log('GLOBALES: '+ a,b,c);
+//var en la ejecucion del programa si modifica las variables globales
+// Si usas let y const los valores globales (primeros) nunca van a ser cambiados si las redeclaras en funciones y estructuras de controls
