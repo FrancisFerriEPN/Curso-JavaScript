@@ -1,15 +1,28 @@
-// Reemplazar elementos
-const nuevo_encabezado = document.createElement("h2");
-// agregar id 
-nuevo_encabezado.id = "encabezado";
-console.log(nuevo_encabezado);
-nuevo_encabezado.appendChild(document.createTextNode("Los mejores cursos"));
+const enlaces = document.querySelectorAll(".enlace");
+const navegacion = document.querySelector('#principal');
+// No se reordenan los enlaces se quedan con sus indices asi se borren
+enlaces[0].remove();
+console.log(enlaces);
+navegacion.removeChild(enlaces[1]);
+console.log(navegacion);
 
-// elemento anterior sera reemplazado
+const primerLi = document.querySelector('.enlace');
+let elemento;
+// SI quieres obtener una clase
+elemento = primerLi.className;  
+// Si el elemento tiene varias clases
+elemento = primerLi.classList.add("nueva-clase"); // agregar clase
+elemento =primerLi.classList;
+primerLi.classList.remove("nueva-clase");
+// Obtener Valor
+elemento = primerLi.getAttribute("href");
+// Cambiar valor
+primerLi.setAttribute("href","http://facebook.com");
+primerLi.setAttribute('data-id',20);
 
-const encabezado_anterior = document.querySelector("#encabezado");
-const elemento_padre = encabezado_anterior.parentElement;
-// Reemplazar
-// nuevo, viejo
-elemento_padre.replaceChild(nuevo_encabezado,encabezado_anterior);
-console.log(elemento_padre);
+// Busar si existe el atributo
+elemento = primerLi.hasAttribute("data-id");
+// Remover atributo
+primerLi.removeAttribute("data-id");
+elemento = primerLi;
+console.log(elemento);
