@@ -1,17 +1,22 @@
-// Get eleent by id
-//let elemento;
+/// Query selector
+// este sirve para id y para clases  a diferencia de getElementById
+// . clase
+// # id
+let encabezado = document.querySelector(".encabezado");// Solo un elemento
 
-//elemento = document.getElementById('header').className;
-let encabezado;
-// para obtener el texto
-encabezado = document.getElementById('encabezado').textContent;
-encabezado = document.getElementById('encabezado').innerText;
-// Para cambiar el estilo en pocas se pude modifiar el css desde JAvaScript
-encabezado = document.getElementById("encabezado");
+// Aplicar CSS
 encabezado.style.background = "#333";
 encabezado.style.color = "#fff";
-encabezado.style.padding = '20px';
-// Cambiar texto
-encabezado.textContent = "Aprovecha el curso mi rey";
-encabezado.innerText = "Aprovecha el curso mi rey";
-console.log(encabezado.innerText);
+encabezado.style.padding = "20px";
+encabezado.textContent = "Los mejores cursos";
+
+encabezado = document.querySelector("h1");
+
+encabezado = document.querySelectorAll("img");// Varios elementos
+console.log(encabezado);
+// Para obtener uno de los hijos de una clase
+let enlace
+enlace = document.querySelector("#principal a:first-child");
+enlace = document.querySelector("#principal a:last-child");
+enlace = document.querySelector("#principal a:nth-child(3)");
+console.log(enlace);
