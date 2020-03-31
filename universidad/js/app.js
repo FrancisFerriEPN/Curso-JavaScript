@@ -1,22 +1,22 @@
-/// Query selector
-// este sirve para id y para clases  a diferencia de getElementById
-// . clase
-// # id
-let encabezado = document.querySelector(".encabezado");// Solo un elemento
 
-// Aplicar CSS
-encabezado.style.background = "#333";
-encabezado.style.color = "#fff";
-encabezado.style.padding = "20px";
-encabezado.textContent = "Los mejores cursos";
-
-encabezado = document.querySelector("h1");
-
-encabezado = document.querySelectorAll("img");// Varios elementos
-console.log(encabezado);
-// Para obtener uno de los hijos de una clase
-let enlace
-enlace = document.querySelector("#principal a:first-child");
-enlace = document.querySelector("#principal a:last-child");
-enlace = document.querySelector("#principal a:nth-child(3)");
+let enlaces = document.getElementsByClassName("enlace");
+console.log(enlaces);
+let enlace = enlaces[2];
+enlace.style.background = '#333';
+enlace.textContent = "Nuevo Enlace";
 console.log(enlace);
+
+enlaces = document.getElementsByClassName("enlace")[2];
+console.log(enlaces);
+
+// Se puede combinar getElement con querrySelector 
+const listaEnlaces = document.querySelector("#principal").getElementsByClassName("enlace");
+console.log(listaEnlaces);
+
+const links = document.getElementsByTagName("a");
+links[18].style.color = 'red';
+links[18].textContent = "Nuevo enlace";
+let links_array = Array.from(links);
+links_array.forEach(function(enlace){
+    console.log(enlace.textContent);
+});
