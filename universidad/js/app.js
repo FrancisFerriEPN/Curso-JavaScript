@@ -1,24 +1,13 @@
-const navegacion = document.querySelector("#principal");
-console.log(navegacion.nodeName);// NAV
-console.log(navegacion.children);
-console.log(navegacion.children[0].nodeName);// A
-console.log(navegacion.children[0].nodeType);// 1
-// Los nodos son las etiquetas HTML
+/*
+const enlaces = document.querySelectorAll(".enlace");
+console.log(enlaces[0].parentElement.parentElement.parentElement);
+// Usa element no Node
 
-// Tipos de Nodos
-// 1 = Elementos HTML
-// 2 = Atributos
-// 3 = Texto
-// 8 = comentarios
-// 9 = documentos
-// 10 = doctype
-
-console.log(navegacion.children[0].textContent = "Nuevo Enlace");
-
-const barra = document.querySelector(".barra");
-console.log(barra.children[0].children[0].children);
 const cursos = document.querySelectorAll(".card");
-console.log(cursos[3].lastElementChild);
-console.log(cursos[3].firstElementChild);
-// Contar numero de elementos hijos
-console.log(cursos[3].childElementCount);
+console.log(cursos[0].parentElement.parentElement.parentElement.children[0].textContent = "Que mas wey");
+*/
+const enlaces = document.querySelectorAll(".enlace");
+// Los siblings son ls que estan al mismo nivel
+console.log(enlaces[4].previousElementSibling.previousElementSibling);
+// Utiliza siempre Elements no Nodos
+console.log(enlaces[0].nextElementSibling.nextElementSibling.parentElement.children[4]);
