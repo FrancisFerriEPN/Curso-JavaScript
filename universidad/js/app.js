@@ -1,17 +1,15 @@
-// Crear elemento
-const enlace = document.createElement('a');
+// Reemplazar elementos
+const nuevo_encabezado = document.createElement("h2");
+// agregar id 
+nuevo_encabezado.id = "encabezado";
+console.log(nuevo_encabezado);
+nuevo_encabezado.appendChild(document.createTextNode("Los mejores cursos"));
 
-// agregar clase
-enlace.className = "enlace";
-enlace.id = "nuevo-id";
+// elemento anterior sera reemplazado
 
-// Para añadir el atributo de href
-enlace.setAttribute("href","#"); // Con esto se puede agregar caracteristicas nuevas
-enlace.href = "perro.com";
-
-// Para añadir texto
-enlace.textContent ="Nuevo enlace";
-//enlace.appendChild(document.createTextNode("Nuevo Enlace")); 
-// Cuidado con append que apila si existe algo no lo reemplaza, si no que agrega mas
-document.querySelector("#secundaria").appendChild(enlace);
-console.log(enlace);
+const encabezado_anterior = document.querySelector("#encabezado");
+const elemento_padre = encabezado_anterior.parentElement;
+// Reemplazar
+// nuevo, viejo
+elemento_padre.replaceChild(nuevo_encabezado,encabezado_anterior);
+console.log(elemento_padre);
