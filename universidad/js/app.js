@@ -1,14 +1,24 @@
+const navegacion = document.querySelector("#principal");
+console.log(navegacion.nodeName);// NAV
+console.log(navegacion.children);
+console.log(navegacion.children[0].nodeName);// A
+console.log(navegacion.children[0].nodeType);// 1
+// Los nodos son las etiquetas HTML
 
-let enlaces = document.querySelectorAll("#principal .enlace");
-enlaces[2].style.background = "red";
-enlaces[2].textContent = "Nuevo enlace";
-console.log(enlaces);
+// Tipos de Nodos
+// 1 = Elementos HTML
+// 2 = Atributos
+// 3 = Texto
+// 8 = comentarios
+// 9 = documentos
+// 10 = doctype
 
-// Obtener enlaces con idice impar odd = impar
-enlaces = document.querySelectorAll("#principal a:nth-child(odd)");
-enlaces.forEach(function(impar){
-    impar.style.background = "red";
-    //impar.style.backgroundColor = "red"; // Es lo mismo que el de arriba
-    impar.style.color = "white";
-})
-console.log(enlaces)
+console.log(navegacion.children[0].textContent = "Nuevo Enlace");
+
+const barra = document.querySelector(".barra");
+console.log(barra.children[0].children[0].children);
+const cursos = document.querySelectorAll(".card");
+console.log(cursos[3].lastElementChild);
+console.log(cursos[3].firstElementChild);
+// Contar numero de elementos hijos
+console.log(cursos[3].childElementCount);
