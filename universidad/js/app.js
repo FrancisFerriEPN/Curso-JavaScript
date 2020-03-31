@@ -1,13 +1,17 @@
+// Crear elemento
+const enlace = document.createElement('a');
 
-const enlaces = document.querySelectorAll(".enlace");
-console.log(enlaces[0].parentElement.parentElement.parentElement);
-// Usa element no Node
+// agregar clase
+enlace.className = "enlace";
+enlace.id = "nuevo-id";
 
-const cursos = document.querySelectorAll(".card");
-console.log(cursos[0].parentElement.parentElement.parentElement.children[0].textContent = "Que mas wey");
+// Para añadir el atributo de href
+enlace.setAttribute("href","#"); // Con esto se puede agregar caracteristicas nuevas
+enlace.href = "perro.com";
 
-const enlaces = document.querySelectorAll(".enlace");
-// Los siblings son ls que estan al mismo nivel
-console.log(enlaces[4].previousElementSibling.previousElementSibling);
-// Utiliza siempre Elements no Nodos
-console.log(enlaces[0].nextElementSibling.nextElementSibling.parentElement.children[4]);
+// Para añadir texto
+enlace.textContent ="Nuevo enlace";
+//enlace.appendChild(document.createTextNode("Nuevo Enlace")); 
+// Cuidado con append que apila si existe algo no lo reemplaza, si no que agrega mas
+document.querySelector("#secundaria").appendChild(enlace);
+console.log(enlace);
