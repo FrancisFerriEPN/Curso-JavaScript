@@ -1,22 +1,14 @@
 
-let enlaces = document.getElementsByClassName("enlace");
-console.log(enlaces);
-let enlace = enlaces[2];
-enlace.style.background = '#333';
-enlace.textContent = "Nuevo Enlace";
-console.log(enlace);
-
-enlaces = document.getElementsByClassName("enlace")[2];
+let enlaces = document.querySelectorAll("#principal .enlace");
+enlaces[2].style.background = "red";
+enlaces[2].textContent = "Nuevo enlace";
 console.log(enlaces);
 
-// Se puede combinar getElement con querrySelector 
-const listaEnlaces = document.querySelector("#principal").getElementsByClassName("enlace");
-console.log(listaEnlaces);
-
-const links = document.getElementsByTagName("a");
-links[18].style.color = 'red';
-links[18].textContent = "Nuevo enlace";
-let links_array = Array.from(links);
-links_array.forEach(function(enlace){
-    console.log(enlace.textContent);
-});
+// Obtener enlaces con idice impar odd = impar
+enlaces = document.querySelectorAll("#principal a:nth-child(odd)");
+enlaces.forEach(function(impar){
+    impar.style.background = "red";
+    //impar.style.backgroundColor = "red"; // Es lo mismo que el de arriba
+    impar.style.color = "white";
+})
+console.log(enlaces)
