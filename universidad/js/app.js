@@ -1,28 +1,34 @@
-// Event Listener clic al buscador
-alert('Un alert');
+/// variables
+const encabezado = document.querySelector("#encabezado");
+const enlaces = document.querySelectorAll('.enlace');
+const boton = document.querySelector("#vaciar-carrito");
+// Click
+boton.addEventListener("click",obtenerEvento);
 
-document.querySelector("#submit-buscador").addEventListener('click',function(event) {
-    // Con esto se previene la accion por defecto, en este caso eso quiere decir que se evita mandar los dats a la siguiente pagina
-    event.preventDefault();
-    alert("Buscando cursos");
-});
+// Doble click
+boton.addEventListener("dblclick",obtenerEvento);
 
-document.querySelector("#submit-buscador").addEventListener('click', ejecutar_boton);
-function ejecutar_boton(evento){
-    evento.preventDefault();
-    let elemento;
-    elemento = evento;
-    elemento = evento.target;
-    elemento = evento.target.id;
-    elemento = evento.target.className;
-    elemento = evento.target.innerText;
-    //console.log("Desde la funcion ejecutar Boton")
-    console.log(elemento);
+// Mouse Enter
+boton.addEventListener('mouseenter', obtenerEvento);
+
+// Mouse Leave
+boton.addEventListener('mouseleave', obtenerEvento);
+
+// Mouse Over (similar a enter)
+boton.addEventListener('mouseover', obtenerEvento);
+
+// Mouse Out (similar a leave)
+boton.addEventListener('mouseout', obtenerEvento);
+
+// Mouse Down cuanta cuando presionas el boton
+boton.addEventListener('mousedown', obtenerEvento);
+
+// Mouse Up cuanta cuando sueltas el boton
+boton.addEventListener('mouseup', obtenerEvento);
+
+// Al moverse dentro del elemento
+encabezado.addEventListener('mousemove', obtenerEvento);
+
+function obtenerEvento(evento){
+    console.log(`EVENTO: ${evento.type}`);
 }
-
-document.querySelector("#encabezado").addEventListener("click", function(evento) {
-    evento.target.innerText = "Nuevo encabezado";
-    evento.target.innerText = 2 + 2;
-    console.log(evento.target.textContent);
-    
-});
