@@ -1,34 +1,33 @@
-/// variables
-const encabezado = document.querySelector("#encabezado");
-const enlaces = document.querySelectorAll('.enlace');
-const boton = document.querySelector("#vaciar-carrito");
-// Click
-boton.addEventListener("click",obtenerEvento);
+const busqueda = document.querySelector("#buscador");
+// Key Down
+busqueda.addEventListener("keydown",obtenerEvento);
 
-// Doble click
-boton.addEventListener("dblclick",obtenerEvento);
+//Key Press
+busqueda.addEventListener("keypress",obtenerEvento);
 
-// Mouse Enter
-boton.addEventListener('mouseenter', obtenerEvento);
+// Key UP
+busqueda.addEventListener("keyup",obtenerEvento);
 
-// Mouse Leave
-boton.addEventListener('mouseleave', obtenerEvento);
+// Cuando das clic dentro para comenzar a escribir
+busqueda.addEventListener("focus",obtenerEvento);
 
-// Mouse Over (similar a enter)
-boton.addEventListener('mouseover', obtenerEvento);
+// Uno de los mas utilizados es blur, este sirve para vlida los campos ana vez da clic fuera de estos.
+busqueda.addEventListener("blur",obtenerEvento);
 
-// Mouse Out (similar a leave)
-boton.addEventListener('mouseout', obtenerEvento);
+// COPIAR CORTAR Y PEGAR
+// Cuando alguien corta el texto del formulario
+busqueda.addEventListener("cut",obtenerEvento);
+busqueda.addEventListener("copy",obtenerEvento);
+busqueda.addEventListener("paste",obtenerEvento);
 
-// Mouse Down cuanta cuando presionas el boton
-boton.addEventListener('mousedown', obtenerEvento);
+// Este es un todo en uno a todo le trata como accion
+busqueda.addEventListener("input",obtenerEvento);
 
-// Mouse Up cuanta cuando sueltas el boton
-boton.addEventListener('mouseup', obtenerEvento);
-
-// Al moverse dentro del elemento
-encabezado.addEventListener('mousemove', obtenerEvento);
+// NO SE PUDO APLICAR ESTE POR QUE NO HABIA SELECTS, PERO SE NOTA PARA QUE SIRVE COMPROBAR CAMBIOS
+busqueda.addEventListener("change",obtenerEvento);
 
 function obtenerEvento(evento){
+    document.querySelector("#encabezado").innerText = busqueda.value;
+    //console.log(busqueda.value);
     console.log(`EVENTO: ${evento.type}`);
 }
