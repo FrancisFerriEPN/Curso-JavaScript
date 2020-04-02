@@ -1,33 +1,21 @@
-const busqueda = document.querySelector("#buscador");
-// Key Down
-busqueda.addEventListener("keydown",obtenerEvento);
+// Event Bubling
+const card = document.querySelector('.card');
+const info_curso = document.querySelector(".info-card");
+const agregar_carito = document.querySelector(".agregar-carrito");
 
-//Key Press
-busqueda.addEventListener("keypress",obtenerEvento);
+// Hay otros elementos que son clickeados sin querer, esto podria ocacionar problemas cn los event listener
 
-// Key UP
-busqueda.addEventListener("keyup",obtenerEvento);
+card.addEventListener("click",function(evento){
+    console.log("Click en card");
+    evento.stopPropagation();
+});
 
-// Cuando das clic dentro para comenzar a escribir
-busqueda.addEventListener("focus",obtenerEvento);
+info_curso.addEventListener("click",function(evento){
+    console.log("Click en info-curso");
+    evento.stopPropagation();
+});
 
-// Uno de los mas utilizados es blur, este sirve para vlida los campos ana vez da clic fuera de estos.
-busqueda.addEventListener("blur",obtenerEvento);
-
-// COPIAR CORTAR Y PEGAR
-// Cuando alguien corta el texto del formulario
-busqueda.addEventListener("cut",obtenerEvento);
-busqueda.addEventListener("copy",obtenerEvento);
-busqueda.addEventListener("paste",obtenerEvento);
-
-// Este es un todo en uno a todo le trata como accion
-busqueda.addEventListener("input",obtenerEvento);
-
-// NO SE PUDO APLICAR ESTE POR QUE NO HABIA SELECTS, PERO SE NOTA PARA QUE SIRVE COMPROBAR CAMBIOS
-busqueda.addEventListener("change",obtenerEvento);
-
-function obtenerEvento(evento){
-    document.querySelector("#encabezado").innerText = busqueda.value;
-    //console.log(busqueda.value);
-    console.log(`EVENTO: ${evento.type}`);
-}
+agregar_carito.addEventListener("click",function(evento){
+    console.log("Click en Agregar a carrito");
+    evento.stopPropagation();
+});
