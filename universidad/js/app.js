@@ -1,28 +1,28 @@
-const enlaces = document.querySelectorAll(".enlace");
-const navegacion = document.querySelector('#principal');
-// No se reordenan los enlaces se quedan con sus indices asi se borren
-enlaces[0].remove();
-console.log(enlaces);
-navegacion.removeChild(enlaces[1]);
-console.log(navegacion);
+// Event Listener clic al buscador
+alert('Un alert');
 
-const primerLi = document.querySelector('.enlace');
-let elemento;
-// SI quieres obtener una clase
-elemento = primerLi.className;  
-// Si el elemento tiene varias clases
-elemento = primerLi.classList.add("nueva-clase"); // agregar clase
-elemento =primerLi.classList;
-primerLi.classList.remove("nueva-clase");
-// Obtener Valor
-elemento = primerLi.getAttribute("href");
-// Cambiar valor
-primerLi.setAttribute("href","http://facebook.com");
-primerLi.setAttribute('data-id',20);
+document.querySelector("#submit-buscador").addEventListener('click',function(event) {
+    // Con esto se previene la accion por defecto, en este caso eso quiere decir que se evita mandar los dats a la siguiente pagina
+    event.preventDefault();
+    alert("Buscando cursos");
+});
 
-// Busar si existe el atributo
-elemento = primerLi.hasAttribute("data-id");
-// Remover atributo
-primerLi.removeAttribute("data-id");
-elemento = primerLi;
-console.log(elemento);
+document.querySelector("#submit-buscador").addEventListener('click', ejecutar_boton);
+function ejecutar_boton(evento){
+    evento.preventDefault();
+    let elemento;
+    elemento = evento;
+    elemento = evento.target;
+    elemento = evento.target.id;
+    elemento = evento.target.className;
+    elemento = evento.target.innerText;
+    //console.log("Desde la funcion ejecutar Boton")
+    console.log(elemento);
+}
+
+document.querySelector("#encabezado").addEventListener("click", function(evento) {
+    evento.target.innerText = "Nuevo encabezado";
+    evento.target.innerText = 2 + 2;
+    console.log(evento.target.textContent);
+    
+});
