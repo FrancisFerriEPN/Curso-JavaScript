@@ -1,21 +1,27 @@
-// Event Bubling
-const card = document.querySelector('.card');
-const info_curso = document.querySelector(".info-card");
-const agregar_carito = document.querySelector(".agregar-carrito");
+// Delegation
 
-// Hay otros elementos que son clickeados sin querer, esto podria ocacionar problemas cn los event listener
+// Esta tecnca onsiste en esperar un clic en cualquier lugar,comproar en donde hizo clic con un if switch y ejecutar el codigo
 
-card.addEventListener("click",function(evento){
-    console.log("Click en card");
-    evento.stopPropagation();
-});
+// Esto sirve cuando tienen una gran cantidad de elementos similares, por que poner un event listener para cada curso seria imposible
 
-info_curso.addEventListener("click",function(evento){
-    console.log("Click en info-curso");
-    evento.stopPropagation();
-});
+// Para escuchar cualquier click  que haya en el documento
+document.body.addEventListener('click',eliminarElemento);
 
-agregar_carito.addEventListener("click",function(evento){
-    console.log("Click en Agregar a carrito");
-    evento.stopPropagation();
-});
+function eliminarElemento(evento) {
+    evento.preventDefault();
+    let elemento;
+    elemento = evento.target;
+    elemento = evento.target.classList;
+    console.log("click");
+    console.log(elemento);
+    if (evento.target.classList.contains("borrar-curso")){
+        console.log("Si!");
+        console.log(evento.target.parentElement.parentElement.remove()); 
+    } else {
+        console.log("No!");
+    }
+    if (evento.target.classList.contains('agregar-carrito')){
+        console.log('Curso agregado');
+    }
+
+}
