@@ -7,6 +7,9 @@ function event_listeners(){
     //Cuando se envia el formulario
     // Cuando se enva el formulario se tiene el listener "submit"
     document.querySelector("#formulario").addEventListener("submit", agregar_tweet);
+
+    // Borrar tweets
+    lista_tweets.addEventListener("click", borrar_tweet);
 }
 // Funciones
 function agregar_tweet(evento){
@@ -31,4 +34,17 @@ function agregar_tweet(evento){
 
     // Se agrega el tweet a la lista
     lista_tweets.appendChild(li);    
+}
+
+function borrar_tweet(evento) {
+    evento.preventDefault();
+    if(evento.target.className === "borrar-tweet"){
+        console.log("Diste clic en eliminar");
+        // No sugiere automaticaente parent element
+        evento.target.parentElement;
+        console.log(evento.target.parentElement);
+        // No sugiere automaticamente remove
+        evento.target.parentElement.remove();
+        alert("Se ha eliminado un tweet");
+    } 
 }
