@@ -34,6 +34,9 @@ function agregar_tweet(evento){
 
     // Se agrega el tweet a la lista
     lista_tweets.appendChild(li);    
+
+    // Añadir a local storage
+    add_local_storage(tweet);
 }
 
 function borrar_tweet(evento) {
@@ -47,4 +50,31 @@ function borrar_tweet(evento) {
         evento.target.parentElement.remove();
         alert("Se ha eliminado un tweet");
     } 
+}
+
+// AGregar tweet a local storage
+function add_local_storage(tweet){
+    let tweets;
+    tweets = obtener_tweets_local_storage();
+    // Gracias a que te devuelve JSON Se puede hacer push
+    tweets.push(tweet);
+
+    // JSON.stringify transforma un json en una notacion string. Esto es por que el localstorage solo acpeta strings. SI quieren guardar cosas tipo imagenes tienes que volverlas srings
+
+    // Transforma en un vector el STRing de json (este es el vector escrito como cadena de texto -> "["sadsda","gato","perro","cuy","conejo","saddsasda"]" en si es una cadena) "
+    localStorage.setItem("tweets",JSON.stringify(tweets));
+    console.log(tweets)
+    console.log(JSON.stringify(tweets));
+}
+
+function obtener_tweets_local_storage(){
+    let tweets;
+    // Comprobar si esta vacio
+    if (localStorage.getItem("tweets") === null){
+        tweets = [];
+    } else {
+        // Vuelve arreglo al string almacenado en local storage
+        tweets = JSON.parse(localStorage.getItem("tweets"));
+    }
+    return tweets;
 }
