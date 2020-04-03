@@ -1,6 +1,7 @@
 // Variables
 const lista_tweets = document.querySelector("#lista-tweets");
 
+
 // Event Listeners
 event_listeners();
 function event_listeners(){
@@ -10,7 +11,13 @@ function event_listeners(){
 
     // Borrar tweets
     lista_tweets.addEventListener("click", borrar_tweet);
+
+    // Contenido cargado
+    // Este listenerr carga cuando el documento a terminado de cargarse
+    document.addEventListener('DOMContentLoaded', cargar_local_storage);
 }
+
+
 // Funciones
 function agregar_tweet(evento){
     // Normalmente no sugiere el preventDefault
@@ -46,9 +53,11 @@ function borrar_tweet(evento) {
         // No sugiere automaticaente parent element
         evento.target.parentElement;
         console.log(evento.target.parentElement);
-        // No sugiere automaticamente remove
-        evento.target.parentElement.remove();
+        // No sugiere automaticamente remove 
+        let tweet = evento.target.parentElement.textContent;  
         alert("Se ha eliminado un tweet");
+        borrar_tweet_local_storage(tweet);
+        evento.target.parentElement.remove();
     } 
 }
 
@@ -67,6 +76,7 @@ function add_local_storage(tweet){
     console.log(JSON.stringify(tweets));
 }
 
+// Comprobar que haya elementos en local strorage, retorna un arreglo
 function obtener_tweets_local_storage(){
     let tweets;
     // Comprobar si esta vacio
@@ -77,4 +87,46 @@ function obtener_tweets_local_storage(){
         tweets = JSON.parse(localStorage.getItem("tweets"));
     }
     return tweets;
+}
+
+// 
+function cargar_local_storage(){
+    let lista_tweets = document.querySelector("#lista-tweets");
+    let tweets = obtener_tweets_local_storage();
+    // LO mas prbable es que no te haya valido asi por que cada elemento probablemente tenga un identifcador uico internamente y lo reescribias csntantemente
+    /*
+    let li;
+    li = document.createElement("li");
+    let boton_borrar;
+    boton_borrar = document.createElement('a');
+    boton_borrar.classList = "borrar-tweet";
+    boton_borrar.textContent = "X";
+    li.appendChild(boton_borrar);
+    console.log(li);
+    console.log(boton_borrar);
+    */
+    tweets.forEach(function (tweet) {
+        const li = document.createElement("li");
+        const boton_borrar = document.createElement('a');
+        boton_borrar.classList = "borrar-tweet";
+        boton_borrar.textContent = "X";
+        // PRIMERO DEBES METER EL TEXTO ANTES DE METER EL BOTON
+        li.textContent = tweet;
+        li.appendChild(boton_borrar);   
+        lista_tweets.appendChild(li);        
+    });
+}
+
+function borrar_tweet_local_storage(tweet){
+    const tweets = obtener_tweets_local_storage();
+    // Acuerdate que no es auto sugerido
+    const tweet_borrar = tweet.substring(0, tweet.length -1);
+    
+    tweets.forEach(function(tweet, index){
+        if(tweet_borrar === tweet){
+            tweets.splice(index, 1);
+        }
+    });
+    console.log(tweets);
+    localStorage.setItem("tweets",JSON.stringify(tweets));
 }
