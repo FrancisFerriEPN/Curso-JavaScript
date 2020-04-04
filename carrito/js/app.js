@@ -60,7 +60,7 @@ function insertar_carrito(curso){
     </td>
     `;
     lista_cursos.appendChild(row);
-    //guardar_curso_local_storage(curso);
+    guardar_curso_local_storage(curso);
 }
 
 function eliminar_curso(evento) {
@@ -84,3 +84,22 @@ function vaciar_carrito(event){
     }
 }
 
+function guardar_curso_local_storage(curso){
+    let cursos;
+    // Obtine la lista de cursos o vacio
+    cursos = obtener_cursos_local_storage();
+    cursos.push(curso);
+    // Combierte de arreglo a string y guarda
+    localStorage.setItem("cursos", JSON.stringify(cursos));
+
+}
+
+function obtener_cursos_local_storage(){
+    let cursos_local_storage;
+    if (localStorage.getItem("cursos") === null){
+        cursos_local_storage = [];
+    }else {
+        cursos_local_storage = JSON.parse(localStorage.getItem("cursos"));
+    }
+    return cursos_local_storage;
+}
