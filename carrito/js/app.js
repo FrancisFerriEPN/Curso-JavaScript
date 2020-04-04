@@ -2,6 +2,7 @@
 const cursos = document.querySelector("#lista-cursos");
 const carrito = document.getElementById("carrito");
 const lista_cursos = document.querySelector("#lista-carrito tbody");
+const boton_vaciar_carrito = document.getElementById("vaciar-carrito");
 // listeners
 cargar_event_listeners();
 
@@ -9,6 +10,12 @@ cargar_event_listeners();
 function cargar_event_listeners(){
     // Dispara cuando se preciona agregar carrito
     cursos.addEventListener("click", comprar_curso)
+
+    // Cuando se elimina un crso del carrito
+    carrito.addEventListener('click', eliminar_curso);
+
+    // Al vaciar el carrito
+    boton_vaciar_carrito.addEventListener('click', vaciar_carrito);
 }
 
 // funciones
@@ -49,9 +56,31 @@ function insertar_carrito(curso){
     <td>${curso.titulo}</td>
     <td>${curso.precio}</td>
     <td>
-        <ahref="#" class="borrar-curso data-id="${curso.id}">X</a>
+        <ahref="#" class="borrar-curso" data-id=${curso.id}">X</a>
     </td>
     `;
-    
     lista_cursos.appendChild(row);
+    //guardar_curso_local_storage(curso);
 }
+
+function eliminar_curso(evento) {
+    evento.preventDefault();
+    console.log();
+    if (evento.target.classList.contains("borrar-curso")){
+        // parentElement no se pone directo
+        const curso_borrar = evento.target.parentElement.parentElement;
+        curso_borrar.remove();
+    }    
+}
+
+// Elimina los cursos del carrito en el dom
+function vaciar_carrito(event){
+    // forma lenta (No recomendad por que pega un salto en el menu lo cierra bruscamete)
+    //lista_cursos.innerHTML = '';
+
+    // forma rapida y RECOMENDADA
+    while(lista_cursos.firstChild){
+        lista_cursos.removeChild(lista_cursos.firstChild);
+    }
+}
+
