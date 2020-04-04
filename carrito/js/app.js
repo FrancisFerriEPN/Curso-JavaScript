@@ -59,7 +59,7 @@ function insertar_carrito(curso){
     <td>${curso.titulo}</td>
     <td>${curso.precio}</td>
     <td>
-        <ahref="#" class="borrar-curso" data-id=${curso.id}">X</a>
+        <ahref="#" class="borrar-curso" data-id="${curso.id}">X</a>
     </td>
     `;
     lista_cursos.appendChild(row);
@@ -68,12 +68,14 @@ function insertar_carrito(curso){
 
 function eliminar_curso(evento) {
     evento.preventDefault();
-    console.log();
+    let curso_id;
     if (evento.target.classList.contains("borrar-curso")){
         // parentElement no se pone directo
+        curso_id = evento.target.getAttribute("data-id");
         const curso_borrar = evento.target.parentElement.parentElement;
         curso_borrar.remove();
-    }    
+    }
+    eliminar_curso_local_storage(curso_id);    
 }
 
 // Elimina los cursos del carrito en el dom
@@ -85,6 +87,8 @@ function vaciar_carrito(event){
     while(lista_cursos.firstChild){
         lista_cursos.removeChild(lista_cursos.firstChild);
     }
+    // vaciar local storage
+    vaciar_local_storage();
 }
 
 function guardar_curso_local_storage(curso){
@@ -121,9 +125,28 @@ function leer_local_storage(){
         <td>${curso.titulo}</td>
         <td>${curso.precio}</td>
         <td>
-            <ahref="#" class="borrar-curso" data-id=${curso.id}">X</a>
+            <ahref="#" class="borrar-curso" data-id="${curso.id}">X</a>
         </td>
         `;
         lista_cursos.appendChild(row);
     });
+}
+
+// Eliminar el curso por el ID de local storage
+function eliminar_curso_local_storage(curso_id){
+    console.log(curso_id);
+    let cursos_local_storage = obtener_cursos_local_storage();
+    cursos_local_storage.forEach(function(curso, index){
+        if (curso.id === curso_id){
+            // funcion para eliminar de arreglo
+            cursos_local_storage.splice(index,1);
+        }
+    });
+    // Guardamos el arreglo actual al storage
+    localStorage.setItem("cursos", JSON.stringify(cursos_local_storage));
+}
+
+// ELimina todos los cursos de local Storge
+function vaciar_local_storage(){
+    localStorage.clear();
 }
