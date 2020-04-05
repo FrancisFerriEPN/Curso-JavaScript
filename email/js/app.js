@@ -4,7 +4,9 @@ const asunto = document.getElementById("asunto");
 const mensaje = document.getElementById("mensaje");
 
 const boton_enviar = document.getElementById("enviar");
-console.log(email, asunto, mensaje, boton_enviar);
+const formulario_enviar = document.getElementById("enviar-mail");
+const boton_reset = document.getElementById("resetBtn");
+
 // Event Listeners
 event_listeners();
 function event_listeners(){
@@ -13,7 +15,15 @@ function event_listeners(){
     email.addEventListener("blur", validar_campo);
     asunto.addEventListener("blur", validar_campo);
     mensaje.addEventListener("blur", validar_campo);
+
+    // boton de enviar en el submit
+    //boton_enviar.addEventListener("click",enviar_email);
+    formulario_enviar.addEventListener("submit", enviar_email);
+
+    // Boton de reset
+    boton_reset.addEventListener("click", resetear_formulario);
 }
+
 // Funciones
 function inicio_app(){
     // Desabilitar elboton envio
@@ -25,7 +35,7 @@ function inicio_app(){
 // Valida que el campo tenga algo escrito
 function validar_campo(){
     // Se valida la longitud del texto y que no este vacio
-    // EL this hace referencia al objeto en si que tiene anexado el event listener
+    // El this hace referencia al objeto en si que tiene anexado el event listener
 
     // EXCELENTE MANERA DE VALIDAR
     validar_longitud(this);
@@ -42,6 +52,36 @@ function validar_campo(){
     } else {
         boton_enviar.disabled = true;
     }
+}
+
+// Resetear el formulario
+function resetear_formulario (e) {
+    e.preventDefault();
+    formulario_enviar.reset();
+}
+// cuando se evia el correo
+function enviar_email(e){
+    // verifica la logitud del texto en los campos
+    e.preventDefault();
+    // spiner al precionar enviar
+    const spinner_gif = document.querySelector("#spinner");
+    spinner_gif.style.display = 'block';
+
+    // GIF ENVIA EMAIL
+    const enviado = document.createElement("img");
+    enviado.src = "img/mail.gif";
+    enviado.style.display = "block";
+    
+    // Ocultar spinner y mostrar gif de enviado
+    setTimeout(function(){
+        spinner_gif.style.display = "none";
+        document.querySelector("#loaders").appendChild(enviado);
+        setTimeout(function(){
+            enviado.remove();
+            // interesante manera de formatear frmularrio
+            formulario_enviar.reset();
+        },5000);
+    },3000);
 }
 
 function validar_longitud(campo){
