@@ -1,28 +1,45 @@
-var a ='a';
-let b = 'b';
-const c = 'c';
+// Object literal
+const cliente = {
+    nombre : 'Francis',
+    saldo : 1200,
+    tipo_cliente : function(){
+        let tipo;
+        // Sin this (saldo) da error
+        if(this.saldo > 1000){
+            tipo = "Gold";
+        } else if (this.saldo > 500){
+            tipo = "Platinum";
+        }  else {
+            tipo = "Normal";
+        }
+        return tipo;
+    }
+}
+console.log(cliente.tipo_cliente());
+console.log(cliente.saldo);
 
-// Scope en la funcion 
-function funcion_Scope() {
-    var a = 'A';
-    let b = 'B';
-    const c = 'C';
-    console.log('FUNCION: '+ a,b,c);
+// Metodo alternativo
+function Cliente(nombre, saldo){
+    this.nombre = nombre;
+    this.saldo = saldo;
+    this.tipo_cliente =  function(edad){
+        let tipo;
+        // Sin this (saldo) da error
+        if(this.saldo > 1000){
+            tipo = "Gold";
+        } else if (this.saldo > 500){
+            tipo = "Platinum";
+        }  else {
+            tipo = "Normal";
+        }
+        return tipo;
+    }
+}
+// Se crean on new como en Java
+const persona = new Cliente("Francis", 300);
+const persona2 = new Cliente("Karen", 6000);
+console.log(persona);
+console.log(persona.tipo_cliente());
 
-}
-funcion_Scope();
-// Scope en bloque
-if(true){
-    var a = 'AA'; // Se resscibe
-    let b = 'BB';
-    const c = 'CC';
-    console.log('BLOQUE: '+ a,b,c);
-}
-// for
-for(var a = 0; a <3; a++){
-    console.log(a);
-}
-// Se puede imprmir directo asi
-console.log('GLOBALES: '+ a,b,c);
-//var en la ejecucion del programa si modifica las variables globales
-// Si usas let y const los valores globales (primeros) nunca van a ser cambiados si las redeclaras en funciones y estructuras de controls
+console.log(persona2);
+console.log(persona2.tipo_cliente());
