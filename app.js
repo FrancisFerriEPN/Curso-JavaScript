@@ -1,61 +1,45 @@
-// String
-const nombre1 = "Pedro"; // tipo string
-const nombre2 = new String("Pedro"); // tipo objeto
-
-console.log(typeof nombre1);
-console.log(typeof nombre2);
-console.log(nombre2);
-
-// En comparacion no estricta son considerados iguales
-if (nombre1 == nombre2){
-    console.log("Si, iguales");
-} else {
-    console.log("No, diferentes");
+function Cliente(nombre,salldo){
+    this.nombre = nombre;
+    this.salldo = salldo;
 }
 
-// En comparacion estricta son considerados distntos
-if (nombre1 === nombre2){
-    console.log("Si, iguales");
-} else {
-    console.log("No, diferentes");
+// Permite guaradar  los metodos de manera segura dentro del prototipo del objeto
+// Crear un prototype
+Cliente.prototype.tipo_cliente = function(edad){
+    let tipo;
+    if(this.salldo > 1000){
+        tipo = "Gold";
+    } else if (this.salldo > 500){
+        tipo = "Platino"
+    } else {
+        tipo = "Normal";
+    }
+    return tipo;
 }
 
-// Numeros
-const numero1 = 20;
-const numero2 = new Number(20);
-console.log(numero1);
-console.log(numero2);
-
-// Booleanos
-const boolean1 = true;
-const boolean2 = new Boolean(true);
-console.log(boolean1);
-console.log(boolean2);
-
-// Funciones
-const funcion1 = function (a, b) {
-    return a + b;   
+// Prototipo que imprime saldo y nombre
+Cliente.prototype.nombre_saldo_cliente = function () {
+    return `Nombre: ${this.nombre}, tu saldo es de: ${this.salldo}, Tipo cliente: ${this.tipo_cliente()} `;
 }
 
-// Muy poco usada
-const funcion2 = new Function('a', 'b', 'return 1 + 2');
-
-console.log(funcion1(2,3));
-console.log(funcion2(1,2));
-
-
-// Objetos (Son exactamente iguales)
-const persona1 = {
-    nombre : 'Francis'
+// Retirar saldo
+Cliente.prototype.retirar_saldo = function(retiro){
+    return this.salldo -= retiro;
 }
-const persona2 = new Object({nombre: 'Francis'});
 
-console.log(persona1);
-console.log(persona2);
+const cliente1 = new Cliente("Francis",200);
+const cliente2 = new Cliente("Pedro",800);
+const cliente3 = new Cliente("Alfonso",1200);
+console.log(cliente1);
 
-// Arreglos (Son exactamente iguales)
-const arreglo1 = [1,2,3,4];
-const arreglo2 = new Array(1,2,3,4);
+console.log(cliente1.tipo_cliente());
+console.log(cliente2.tipo_cliente());
+console.log(cliente3.tipo_cliente()); 
 
-console.log(arreglo1);
-console.log(arreglo2);
+// Protoipo que imprime saldo y nombre
+console.log(cliente1.nombre_saldo_cliente());
+console.log(cliente2.nombre_saldo_cliente());
+console.log(cliente3.nombre_saldo_cliente());
+
+
+console.log(cliente2.retirar_saldo(300));
