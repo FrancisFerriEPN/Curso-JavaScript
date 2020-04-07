@@ -1,8 +1,7 @@
 // Para ECMAScript 6
 class Cliente{
-    constructor(nombre, apellido, saldo){
+    constructor(nombre, saldo){
         this.nombre = nombre;
-        this. apellido = apellido;
         this.saldo = saldo;
     }
 
@@ -11,31 +10,33 @@ class Cliente{
         return `Holas ${this.nombre}, tu saldo es de: ${this.saldo}`
     }
 
-    tipo_cliente(){
-        let tipo;
-        if (this.saldo > 10000){
-            tipo = "Gold";
-        } else if (this.saldo > 5000){
-            tipo = "Platinum";
-        } else {
-            tipo = "Normal";
-        }
-        return tipo;
-    }
-
-    retirar_saldo (monto){
-        return this.saldo -= monto;
-    }
-
-    // Los metodos estaticos sirven para no tener que instanciar un objeto. Se puede acceder a los metodods desde la clase
     static bienvenida(){
         return `Bienvenido al cajero`;
     }
 }
 
-const maria = new Cliente("Maria", "Peréz",11000);
-console.log(maria);
-console.log(maria.imprimir_saldo());
-console.log(maria.tipo_cliente());
-console.log(maria.retirar_saldo(30));
+class Empresa extends Cliente{
+    constructor(nombre, saldo, telefono, tipo){
+        // Se asignan en el constructor padre, de esta manera se hereda las clases
+        super(nombre,saldo); 
+        this.telefono = telefono;
+        this.tipo = tipo;
+    }
+
+    // Se resscibe el metodo de una manera muy facil solo se lo vuelve a escribir
+    static bienvenida(){
+        return `Bienvenido al cajero para empresas`;
+    }
+}
+
+const empresa = new Empresa("Empresa1",10000,12322432,"Construccion");
+console.log(empresa);
+
+// hereda todos los metodos
+console.log(empresa.imprimir_saldo());
+
+const cliente = new Cliente("Paco", 2000);
+console.log(cliente.imprimir_saldo());
+
 console.log(Cliente.bienvenida());
+console.log(Empresa.bienvenida());
