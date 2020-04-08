@@ -26,13 +26,13 @@ function agregar_event_listenrs(){
         const interfaz = new Interfaz();
 
         // revisamos que los camos no esten vacios
-        if(marca_selecionada===''|| anio_selecionado === '' || tipo === ""){
+        if(marca_selecionada ===''|| anio_selecionado === '' || tipo === ""){
+            interfaz.mostrar_error("faltan datos revisar el formulario y prueba de nuevo","error");
             console.log("Faltan datos");
         } else {
             // Instanciar seguro y mostrar interfaz
             console.log("Todo correcto");
         }
-
 
         console.log(marca_selecionada);
         console.log(anio_selecionado);
@@ -49,8 +49,23 @@ function Seguro(marca, anio, tipo){
     this.tipo = tipo;
 }
 // Interfaz de usuario
-function Interfaz(){
-    // TOdo lo que se muestra
+function Interfaz(){}
+
+Interfaz.prototype.mostrar_error = function (mensaje,tipo){
+    const div = document.createElement("div");
+    if (tipo === "error"){
+        div.classList.add('mensaje');
+        div.classList.add('error');
+    } else {
+        div.classList.add('mensaje');
+        div.classList.add('correcto');
+    }
+    div.innerHTML= `${mensaje}`;
+    formulario_seguro.insertBefore(div, document.querySelector(".form-group"));
+
+    setTimeout(function(){
+        document.querySelector(".mensaje").remove();
+    },3000);
 }
 
 // EL año maximo es el año actual
