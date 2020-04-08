@@ -33,6 +33,9 @@ function agregar_event_listenrs(){
             const seguro = new Seguro(marca_selecionada, anio_selecionado, tipo);
             // Cotizar el seguro
             const cantidad = seguro.cotizaz_seguro();
+
+            // Mostarr resultado
+            interfaz.mostrar_resultado(seguro, cantidad);
         }
     });
 }
@@ -101,7 +104,33 @@ Interfaz.prototype.mostrar_error = function (mensaje,tipo){
         document.querySelector(".mensaje").remove();
     },3000);
 }
-
+// Imprime el resultado de la cotizacion
+Interfaz.prototype.mostrar_resultado = function(seguro, total){
+    const resultado = document.getElementById("resultado");
+    let marca;
+    switch(seguro.marca){
+        case '1':
+            marca = "Americano";
+            break;
+        case '2':
+            marca = "Asiatico";
+            break;
+        case '3':
+            marca = "Europeo";
+    }
+    // Crear Div
+    const div = document.createElement("div");
+    // le agregamos la informacion para el resumern
+    div.innerHTML = `
+        <p>Tu Resumen:</p>
+        <p>Marca: ${marca}</p>
+        <p>Año: ${seguro.anio}</p>
+        <p>TIpo: ${seguro.tipo}</p>
+        <p>Total: $${total}</p>
+    `;
+    resultado.appendChild(div);
+    console.log(marca);
+}
 // EL año maximo es el año actual
 const max = new Date().getFullYear();
 
