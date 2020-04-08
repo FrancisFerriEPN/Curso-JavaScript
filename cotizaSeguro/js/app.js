@@ -27,8 +27,13 @@ function agregar_event_listenrs(){
 
         // revisamos que los camos no esten vacios
         if(marca_selecionada ===''|| anio_selecionado === '' || tipo === ""){
-            interfaz.mostrar_error("faltan datos revisar el formulario y prueba de nuevo","error");
+            interfaz.mostrar_mensaje("faltan datos revisar el formulario y prueba de nuevo","error");
         } else {
+            // Limpiar resultados anteriores
+            const resultados = document.querySelector('#resultado div');
+            if (resultados !== null){
+                resultados.remove();
+            }
             // Instanciar seguro y mostrar interfaz
             const seguro = new Seguro(marca_selecionada, anio_selecionado, tipo);
             // Cotizar el seguro
@@ -36,6 +41,7 @@ function agregar_event_listenrs(){
 
             // Mostarr resultado
             interfaz.mostrar_resultado(seguro, cantidad);
+            interfaz.mostrar_mensaje("Cotizando....","exito");
         }
     });
 }
@@ -88,7 +94,7 @@ Seguro.prototype.cotizaz_seguro = function(){
 // Interfaz de usuario
 function Interfaz(){}
 
-Interfaz.prototype.mostrar_error = function (mensaje,tipo){
+Interfaz.prototype.mostrar_mensaje = function (mensaje,tipo){
     const div = document.createElement("div");
     if (tipo === "error"){
         div.classList.add('mensaje');
@@ -104,6 +110,7 @@ Interfaz.prototype.mostrar_error = function (mensaje,tipo){
         document.querySelector(".mensaje").remove();
     },3000);
 }
+
 // Imprime el resultado de la cotizacion
 Interfaz.prototype.mostrar_resultado = function(seguro, total){
     const resultado = document.getElementById("resultado");
@@ -122,14 +129,18 @@ Interfaz.prototype.mostrar_resultado = function(seguro, total){
     const div = document.createElement("div");
     // le agregamos la informacion para el resumern
     div.innerHTML = `
-        <p>Tu Resumen:</p>
+        <p class="header">Tu Resumen:</p>
         <p>Marca: ${marca}</p>
         <p>Año: ${seguro.anio}</p>
         <p>TIpo: ${seguro.tipo}</p>
         <p>Total: $${total}</p>
     `;
-    resultado.appendChild(div);
-    console.log(marca);
+    const spinner = document.querySelector("#cargando img");
+    spinner.style.display = 'block';
+    setTimeout(function(){
+        spinner.style.display = "none",
+        resultado.appendChild(div);
+    },3000);
 }
 // EL año maximo es el año actual
 const max = new Date().getFullYear();
