@@ -28,15 +28,12 @@ function agregar_event_listenrs(){
         // revisamos que los camos no esten vacios
         if(marca_selecionada ===''|| anio_selecionado === '' || tipo === ""){
             interfaz.mostrar_error("faltan datos revisar el formulario y prueba de nuevo","error");
-            console.log("Faltan datos");
         } else {
             // Instanciar seguro y mostrar interfaz
-            console.log("Todo correcto");
+            const seguro = new Seguro(marca_selecionada, anio_selecionado, tipo);
+            // Cotizar el seguro
+            const cantidad = seguro.cotizaz_seguro();
         }
-
-        console.log(marca_selecionada);
-        console.log(anio_selecionado);
-        console.log(tipo)
     });
 }
 
@@ -48,6 +45,43 @@ function Seguro(marca, anio, tipo){
     this.anio = anio;
     this.tipo = tipo;
 }
+
+Seguro.prototype.cotizaz_seguro = function(){
+    /*
+        1 = Americano 1.15
+        2 = Asiatico 1.05
+        3 = europeo 1.35
+    */
+   let cantidad;
+   const base = 2000;
+   switch (this.marca){
+        case '1':
+            cantidad = base * 1.15;
+            break;
+        case '2':
+            cantidad = base * 1.05;
+            break;
+        case '3':
+            cantidad = base * 1.35;
+   }
+
+   // Leer el año
+   const diferencia = new Date().getFullYear() - this.anio;
+
+   // Ccada año de diferencia hay que reducir el 3% del valor del seguro
+   cantidad = cantidad - (3/100 * diferencia* cantidad);
+   /*
+     Si el seguro es basico se multiplica pr 30% mas
+     Si el seguro es completo se multipca or 50% mas
+   */
+  if (this.tipo === 'basico'){
+      cantidad *= 1.30;
+  } else {
+      cantidad *= 1.50;
+  }
+   return cantidad;
+}
+
 // Interfaz de usuario
 function Interfaz(){}
 
@@ -72,9 +106,6 @@ Interfaz.prototype.mostrar_error = function (mensaje,tipo){
 const max = new Date().getFullYear();
 
 const min = max - 20;
-console.log(max);
-console.log(min);
-console.log(select_anio);
 
 //let anios = [];
 
