@@ -1,5 +1,6 @@
 // Variables
 const presupuesto_usuario = prompt("Cual es tu presumpuest Semanal");
+const formulario = document.getElementById("agregar-gasto");
 
 let cantidad_presupuesto;
 
@@ -26,6 +27,46 @@ class Interfaz{
         presupuesto.innerHTML = `${cantidad}`;
         restante.innerHTML = `${cantidad}`;
     }
+
+    imprimir_mensaje(mensaje, tipo){
+        const div_mensaje = document.createElement("div");
+        div_mensaje.classList.add('text-center','alert');
+
+        if (tipo === "error"){
+            // est clase pone texto rojo
+            div_mensaje.classList.add('alert-danger');
+        } else {
+            // Esta clase pone texto verde
+            div_mensaje.classList.add("alert-success");
+        }
+
+        //<<<
+        div_mensaje.appendChild(document.createTextNode(mensaje));
+        //>>>
+
+        // Insertar en el DOM
+        document.querySelector('.primario').insertBefore(div_mensaje, formulario);
+        // Quitar el alert despes de tres segundos
+        setTimeout(function(){
+            document.querySelector(".primario .alert").remove();
+            formulario.reset();
+        },3000);
+    }
+
+    // Inserta gasto a la lista
+    agregar_gasto_lista(nombre_gasto, cantidad_gasto){
+        const listado_gastos = document.querySelector("#gastos ul");
+        const li = document.createElement("li");
+        li.className = "list-grop-item d-flex justify-content-between align-items-center";
+        // Insertar gasto
+       li.innerHTML = `
+        ${nombre_gasto}
+        <span class="badge badge-primary badge-pill">$${cantidad_gasto}
+       `;
+
+       // Insertar al HTML
+       listado_gastos.appendChild(li);
+    }
 }
 
 // Event Listeners
@@ -41,3 +82,24 @@ document.addEventListener("DOMContentLoaded", function(){
         ui.insertar_presupuesto(cantidad_presupuesto.presupuesto);
     }
 })
+
+formulario.addEventListener('submit', function(e){
+    e.preventDefault();
+    console.log("Enviado");
+
+    // Leer del frulario de gastos
+    // Los input titnen atributo .value para obtener lo que esta escrito
+    const nombre_gasto = document.getElementById("gasto").value;
+    const cantidad_gasto = document.getElementById("cantidad").value;
+
+    // Instanciar la interfaz
+    const ui = new Interfaz();
+
+    if (nombre_gasto === "" || cantidad_gasto === ""){
+        ui.imprimir_mensaje("Hubo un error", "error");
+    } else {
+        // Insertar en el HTML
+        ui.imprimir_mensaje("Correcto", "correcto");
+        ui.agregar_gasto_lista(nombre_gasto, cantidad_gasto);
+    }
+});
