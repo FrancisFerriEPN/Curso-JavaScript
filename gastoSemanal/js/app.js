@@ -3,7 +3,6 @@ const presupuesto_usuario = prompt("Cual es tu presumpuest Semanal");
 
 let cantidad_presupuesto;
 
-console.log(presupuesto_usuario);
 // Clases
 class Presupuesto {
     constructor(presupuesto){
@@ -17,6 +16,18 @@ class Presupuesto {
 
 }
 
+// Clase de INterfaz maneja todo lo relacionado con el HTML
+class Interfaz{
+    insertar_presupuesto(cantidad){
+        // Estan unidos el element y la etiqueta en el querry selector
+        const presupuesto = document.querySelector("span#total");
+        const restante = document.querySelector("span#restante");
+        // Insertar al html
+        presupuesto.innerHTML = `${cantidad}`;
+        restante.innerHTML = `${cantidad}`;
+    }
+}
+
 // Event Listeners
 // ESto produce que tenga que poner algo aceptado antes de que se desbloquee la aplicacion
 document.addEventListener("DOMContentLoaded", function(){
@@ -25,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function(){
     } else {
         // INstanciar un presupuesto
         cantidad_presupuesto = new Presupuesto(presupuesto_usuario);
-
-        console.log(cantidad_presupuesto);
+        // Instanciar la clase dinterfaz
+        const ui = new Interfaz();
+        ui.insertar_presupuesto(cantidad_presupuesto.presupuesto);
     }
 })
