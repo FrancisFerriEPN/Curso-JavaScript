@@ -67,6 +67,40 @@ class Interfaz{
        // Insertar al HTML
        listado_gastos.appendChild(li);
     }
+
+    // Comprueba el presupuesto restante
+    presupuesto_restante(cantidad_gasto){
+        const restante = document.querySelector("span#restante");
+        // Leemos el presupueso restante
+        const presupuesto_restante_usuario = cantidad_presupuesto.presupuesto_restante(cantidad_gasto);
+        restante.innerHTML = `${cantidad_presupuesto.restante}`;
+
+        //<<<
+        this.comprobar_presupuesto();
+        //>>>
+    }
+
+    // Cambia de color el presupuesto restante
+    comprobar_presupuesto(){
+        const presupuesto_total = cantidad_presupuesto.presupuesto;
+        const presupuesto_restante = cantidad_presupuesto.restante;
+        // COmprobar el 25%
+        if ((presupuesto_total/4) > presupuesto_restante) {
+            const restante = document.querySelector('.restante');
+
+            //<<<
+            restante.classList.remove('alert-success', 'alert-warning');
+            restante.classList.add("alert-danger");
+            //>>>
+
+        } else if((presupuesto_total/2) > presupuesto_restante){
+            const restante = document.querySelector('.restante');
+            restante.classList.remove('alert-success');
+            restante.classList.add("alert-warning");
+        }
+        // comprobar el 50% del gasto
+
+    }
 }
 
 // Event Listeners
@@ -85,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 formulario.addEventListener('submit', function(e){
     e.preventDefault();
-    console.log("Enviado");
 
     // Leer del frulario de gastos
     // Los input titnen atributo .value para obtener lo que esta escrito
@@ -101,5 +134,6 @@ formulario.addEventListener('submit', function(e){
         // Insertar en el HTML
         ui.imprimir_mensaje("Correcto", "correcto");
         ui.agregar_gasto_lista(nombre_gasto, cantidad_gasto);
+        ui.presupuesto_restante(cantidad_gasto);
     }
 });
