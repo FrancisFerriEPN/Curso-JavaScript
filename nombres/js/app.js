@@ -27,6 +27,35 @@ function cargar_nombres(e){
     if (cantidad !== ""){
         url += `amount=${cantidad}&`;
     }
-    console.log(url);
+    
+    // Conectar con AJAX
+    // CRear o iniciar el XMLHTTP requst
+    const xhr = new XMLHttpRequest();
+    // abrimos la conexion
+    xhr.open('GET',url, true);
+    // dats e impresion del template
+    xhr.onload = function(){
+        if (this.status === 200){
+            const nombres = JSON.parse(this.responseText);
+            // generar html
+            let html_nombres = '<h2>Nombres generados</h2>';
+
+            //<<<
+            html_nombres += '<ul class="lista">'
+            // Imprimir cada nmbre
+            nombres.forEach(function(nombre) {
+                html_nombres += `
+                    <li>${nombre.name}</li>
+                `;
+            });
+
+            html_nombres += '</ul>';
+            //>>>
+
+            document.getElementById("resultado").innerHTML = html_nombres;
+        }
+    }
+    // enviar el request
+    xhr.send();
 
 }
