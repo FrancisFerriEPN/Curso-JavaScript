@@ -1,42 +1,48 @@
-// Para ECMAScript 6
-class Cliente{
-    constructor(nombre, saldo){
-        this.nombre = nombre;
-        this.saldo = saldo;
-    }
+// Callback en foreach
 
-    // Cualquier metodo que se agregue va a ser parte del protp
-    imprimir_saldo(){
-        return `Holas ${this.nombre}, tu saldo es de: ${this.saldo}`
-    }
+const ciudades = ['Londres', "New York", "Paris", "Madrid",'Viena'];
+// Inline callback
+// ESTA ES LA FORMA RECOMENDADA PARA NO HACER EL CODIGO CONFUSO
+ciudades.forEach(function(ciudad){
+    console.log(ciudad);
+})
 
-    static bienvenida(){
-        return `Bienvenido al cajero`;
-    }
+console.log("\n\nSegunda forma");
+
+//<<<
+// No necesita especificar el parametro este es reconocid automaticamente
+ciudades.forEach(callback)
+
+// Con funcion definida
+function callback(ciudad){
+    console.log(ciudad);
 }
 
-class Empresa extends Cliente{
-    constructor(nombre, saldo, telefono, tipo){
-        // Se asignan en el constructor padre, de esta manera se hereda las clases
-        super(nombre,saldo); 
-        this.telefono = telefono;
-        this.tipo = tipo;
-    }
+//>>>
 
-    // Se resscibe el metodo de una manera muy facil solo se lo vuelve a escribir
-    static bienvenida(){
-        return `Bienvenido al cajero para empresas`;
-    }
+// Listado de paises
+const paises = ['Francia', "España", "Portugal", "Australia", "Inglaterra", "Irlanda"];
+
+// Se agrega un nuevo pais despues de dos segundos
+function nuevo_pais(pais, callback){
+    setTimeout(function(){
+        paises.push(pais);
+        // Se le pasa de parametro una funcion
+        callback();
+    },2000);
 }
+// Los paises se agregan despues de un segundo
+function mostrar_paises(){
+    setTimeout(function(){
+        let html = "";
+        paises.forEach(function(pais){
+            html += `<li>${pais}</li>`;
+        })
+        document.getElementById("app").innerHTML = html;
+    },1000);
+}
+// Agregar nuevo pais
+nuevo_pais("Alemania", mostrar_paises);
 
-const empresa = new Empresa("Empresa1",10000,12322432,"Construccion");
-console.log(empresa);
-
-// hereda todos los metodos
-console.log(empresa.imprimir_saldo());
-
-const cliente = new Cliente("Paco", 2000);
-console.log(cliente.imprimir_saldo());
-
-console.log(Cliente.bienvenida());
-console.log(Empresa.bienvenida());
+// Mostrar los paises
+mostrar_paises();
