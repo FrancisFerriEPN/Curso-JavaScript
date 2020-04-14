@@ -1,48 +1,33 @@
-// Callback en foreach
+// Promises
 
-const ciudades = ['Londres', "New York", "Paris", "Madrid",'Viena'];
-// Inline callback
-// ESTA ES LA FORMA RECOMENDADA PARA NO HACER EL CODIGO CONFUSO
-ciudades.forEach(function(ciudad){
-    console.log(ciudad);
+// Devuelve resolve y reject
+// Resolve se cumple el promise
+// Reject no se cumple
+const esperando = new Promise(function(resolve, reject){
+    // el alor que se esta revisando no esta disponible en  el momento pero se espera a que este disponible en el futuro
+    setTimeout(function(){
+        resolve("Se ejecuto");
+    },5000);// Aqui estamos simulando el tiempo
+});
+
+// Despues de 5 segundos el resultado sera correcto y va a ejecutar lo que este en then
+esperando.then(function(mensaje){
+    console.log(mensaje);
+});
+
+const aplicar_desuento = new Promise(function(resolve, reject){
+    const descuento = false;
+    if(descuento){
+        resolve('Descuento aplicado');
+    } else {
+        reject('No se puede aplicar el descuento');
+    }
+});
+
+// Se utiliza cath direto, resulat muy interesante
+aplicar_desuento.then(function(mensaje){
+    console.log(mensaje);
+}).catch(function(mensaje){
+    console.log(mensaje);
+    alert(mensaje);    
 })
-
-console.log("\n\nSegunda forma");
-
-//<<<
-// No necesita especificar el parametro este es reconocid automaticamente
-ciudades.forEach(callback)
-
-// Con funcion definida
-function callback(ciudad){
-    console.log(ciudad);
-}
-
-//>>>
-
-// Listado de paises
-const paises = ['Francia', "España", "Portugal", "Australia", "Inglaterra", "Irlanda"];
-
-// Se agrega un nuevo pais despues de dos segundos
-function nuevo_pais(pais, callback){
-    setTimeout(function(){
-        paises.push(pais);
-        // Se le pasa de parametro una funcion
-        callback();
-    },2000);
-}
-// Los paises se agregan despues de un segundo
-function mostrar_paises(){
-    setTimeout(function(){
-        let html = "";
-        paises.forEach(function(pais){
-            html += `<li>${pais}</li>`;
-        })
-        document.getElementById("app").innerHTML = html;
-    },1000);
-}
-// Agregar nuevo pais
-nuevo_pais("Alemania", mostrar_paises);
-
-// Mostrar los paises
-mostrar_paises();
