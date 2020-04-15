@@ -1,3 +1,5 @@
+// ESTA API DEJO DE FUNCIONAR
+
 document.querySelector("#generar-nombre").addEventListener('submit', cargar_nombres);
 
 // llamando a AJAX e imprimir resultrados
@@ -28,34 +30,22 @@ function cargar_nombres(e){
         url += `amount=${cantidad}&`;
     }
     
-    // Conectar con AJAX
-    // CRear o iniciar el XMLHTTP requst
-    const xhr = new XMLHttpRequest();
-    // abrimos la conexion
-    xhr.open('GET',url, true);
-    // dats e impresion del template
-    xhr.onload = function(){
-        if (this.status === 200){
-            const nombres = JSON.parse(this.responseText);
-            // generar html
-            let html_nombres = '<h2>Nombres generados</h2>';
-
-            //<<<
-            html_nombres += '<ul class="lista">'
-            // Imprimir cada nmbre
-            nombres.forEach(function(nombre) {
-                html_nombres += `
+    
+    // Crear FETCH
+    fetch(url)
+        .then(function(resp){
+            return resp.json();
+        }).then(function(data){
+            let html = '<h2>Nombres generados';
+            html += `<ul class="lista"`;
+            data.forEach(function(nombre){
+                html += `
                     <li>${nombre.name}</li>
                 `;
             });
-
-            html_nombres += '</ul>';
-            //>>>
-
-            document.getElementById("resultado").innerHTML = html_nombres;
-        }
-    }
-    // enviar el request
-    xhr.send();
-
+            html += '</ul>';
+            document.querySelector("#resultado").innerHTML = html;
+        }).catch(function(error){
+            console.log(error);
+        });
 }
