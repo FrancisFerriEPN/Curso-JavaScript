@@ -1,33 +1,69 @@
-// Promises
+// Arroy function
+let aprendiendo;
 
-// Devuelve resolve y reject
-// Resolve se cumple el promise
-// Reject no se cumple
-const esperando = new Promise(function(resolve, reject){
-    // el alor que se esta revisando no esta disponible en  el momento pero se espera a que este disponible en el futuro
-    setTimeout(function(){
-        resolve("Se ejecuto");
-    },5000);// Aqui estamos simulando el tiempo
+aprendiendo = function(){
+    console.log("Aprendiendo JavaScript");
+}
+
+// Automaticamente al utilizar el  igual para la funcion la variable se volvio un metodo
+
+aprendiendo = () => {
+    console.log("Aperendiendo JavaScript");
+}
+
+
+// Cuando es una linea no se requiere llaves
+aprendiendo = () => console.log("No se requiere llaves");
+
+aprendiendo();
+
+// Retorna valor
+aprendiendo = () => "Retorno directo";
+
+
+// Objeto
+// Se utiliza parentesis como escape a las llaves
+aprendiendo = () => ({gato :"Retorno directo"});
+console.log(aprendiendo());
+
+// PAsando parametros
+aprendiendo = (tecnologia) => console.log(`Aprendiendo ${tecnologia}`);
+
+// Cuando se pasa un solo parametro el parentesis es opcional
+aprendiendo = tecnologia => console.log(`Aprendiendo ${tecnologia}`);
+
+// Si tiene dos o mas parametross los parentesis son obligatirios
+aprendiendo = (tec1, tec2) => console.log(`Aprendiendo ${tec1} y ${tec2}`);
+
+aprendiendo("JavaScript", "ES6");
+
+const productos = ["Disco", "camisa", "Guitarra"];
+
+// Se hace un callback
+
+//<<<
+
+let letras_producto = productos.map(function(producto){
+    return producto.length;
 });
 
-// Despues de 5 segundos el resultado sera correcto y va a ejecutar lo que este en then
-esperando.then(function(mensaje){
-    console.log(mensaje);
+letras_producto = productos.map((producto) => {
+    return producto.length;
+}) 
+
+letras_producto = productos.map((producto) =>  producto.length);
+
+letras_producto = productos.map(producto =>  producto.length);
+
+console.log(letras_producto);
+
+productos.forEach(producto => {
+    console.log(producto);
 });
 
-const aplicar_desuento = new Promise(function(resolve, reject){
-    const descuento = false;
-    if(descuento){
-        resolve('Descuento aplicado');
-    } else {
-        reject('No se puede aplicar el descuento');
-    }
-});
+productos.forEach(producto => console.log(producto));
+//>>>
 
-// Se utiliza cath direto, resulat muy interesante
-aplicar_desuento.then(function(mensaje){
-    console.log(mensaje);
-}).catch(function(mensaje){
-    console.log(mensaje);
-    alert(mensaje);    
-})
+
+
+
