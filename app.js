@@ -1,21 +1,16 @@
-// Async Await
-async function obtener_clientes(){
-    const cliientes = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve('Clientes descargados...');
-        },2000);
-    });
-    // error o no
-    const error = true;
-    if(!error){
-        // Espera a que se cumpla el promise
-        const respuesta = await cliientes;
-        return respuesta;
-    } else {
-        await Promise.reject("Hubo un error...");
-    }
+const url = "https://jsonplaceholder.typicode.com/todos";
+
+async function leer_todos(){
+    // ESperar la respuesta
+    const respuesta = await fetch (url);
+
+    // Procede cuando la respuesta este hecha
+    const datos = await respuesta.json();
+    return datos;
 }
 
-obtener_clientes()
-    .then(res => console.log(res))
-    .catch(error => console.log(error));
+// Muestra un promise
+console.log(leer_todos());
+
+leer_todos()
+    .then(usurios => console.log(usurios));
