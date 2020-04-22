@@ -1,4 +1,6 @@
 // https://www.cryptocompare.com/cryptopian/api-keys
+// https://tobiasahlin.com/spinkit/
+
 // Leer el formulario
 // Variables
 

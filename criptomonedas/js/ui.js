@@ -42,6 +42,13 @@ class Interfaz{
     // Imprimir el resultado de la cotizacion
     mostrar_resultado(resultado, moneda, cryptomoneda){
 
+        //<<<
+        // En caso de un resultado anterior ocultarlo
+        const resultado_anterior = document.querySelector('#resultado > div');
+        if(resultado_anterior){
+            resultado_anterior.remove();
+        }
+        //>>>
 
         //<<<
         const datos_conversion = resultado[cryptomoneda][moneda];
@@ -52,7 +59,7 @@ class Interfaz{
         let precio = datos_conversion.PRICE.toFixed(2),
             porcentaje = datos_conversion.CHANGEPCTDAY.toFixed(2),
             
-            
+
             //<<<
             actualizado = new Date(datos_conversion.LASTUPDATE * 1000).toLocaleDateString('es-Mx');
             //>>>
@@ -69,9 +76,18 @@ class Interfaz{
                 </div>
             </div>
         `;
-
+        this.mostrar_spinner("block");
         // Insertar el resultado
-        document.querySelector('#resultado').innerHTML = template_HTML;
+        setTimeout( () =>{
+            this.mostrar_spinner("none");
+            document.querySelector('#resultado').innerHTML = template_HTML;
+        },3000);
+        
     }
 
+    // Mostrar un spiner de carga al enviar la cotizacion
+    mostrar_spinner(vista){
+        const spinner = document.querySelector(".contenido-spinner");
+        spinner.style.display = vista;
+    }
 }
