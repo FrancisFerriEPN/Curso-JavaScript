@@ -10,7 +10,15 @@ class Interfaz{
     construir_select(){
         cotizador.obtener_monedas_API()
         .then(monedas =>{
-            console.log(monedas);
+            
+            //<<<
+
+            for(const [key , value] of Object.entries(monedas.monedas.Data)) {
+                console.log(value);
+            }
+
+            //>>>
+
         })
     }
 
