@@ -33,6 +33,11 @@ formulario.addEventListener("submit", (event) => {
         ui.mostrar_mensaje("Ambos campos son obligatorios", "alert bg-danger text-center");
     } else {
         // Todo bien consultar la API
+        cotizador.obtener_valores(moneda_seleccionada, criptomoneda_seleccionada)
+        .then( data => {
+            console.log(data);
+            ui.mostrar_resultado(data.resultado.RAW, moneda_seleccionada, criptomoneda_seleccionada);
+        })
     }    
 });
 

@@ -10,11 +10,15 @@ class Interfaz{
     construir_select(){
         cotizador.obtener_monedas_API()
         .then(monedas =>{
-            
+            // Obtener el select de opciones
+            const select_criptomoneda = document.querySelector("#criptomoneda");
             //<<<
 
             for(const [key , value] of Object.entries(monedas.monedas.Data)) {
-                console.log(value);
+                const opcion = document.createElement("option");
+                opcion.value = value.Symbol;
+                opcion.appendChild(document.createTextNode(value.CoinName));
+                select_criptomoneda.appendChild(opcion);
             }
 
             //>>>
@@ -34,4 +38,14 @@ class Interfaz{
             document.querySelector('.mensajes div').remove();
         },3000);
     }
+
+    // Imprimir el resultado de la cotizacion
+    mostrar_resultado(resultado, moneda, cryptomoneda){
+
+        //<<<
+        console.log(resultado[cryptomoneda][moneda]);
+        //>>>
+
+    }
+
 }
