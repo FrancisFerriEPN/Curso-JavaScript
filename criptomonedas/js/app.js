@@ -1,7 +1,13 @@
 // https://www.cryptocompare.com/cryptopian/api-keys
 // Leer el formulario
 // Variables
+
+//<<<
+// Primero cotizador antes que UI
+const cotizador = new API('14aa286e9a8621569221494da76d21c1172535f0fc3e790038bffe9f01c2cd0a');
 const ui = new Interfaz();
+
+//>>>
 
 const formulario = document.querySelector("#formulario");
 const moneda = document.getElementById("moneda");
