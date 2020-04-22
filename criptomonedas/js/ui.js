@@ -42,10 +42,36 @@ class Interfaz{
     // Imprimir el resultado de la cotizacion
     mostrar_resultado(resultado, moneda, cryptomoneda){
 
+
         //<<<
-        console.log(resultado[cryptomoneda][moneda]);
+        const datos_conversion = resultado[cryptomoneda][moneda];
         //>>>
 
+
+        // recortar digitos de precio
+        let precio = datos_conversion.PRICE.toFixed(2),
+            porcentaje = datos_conversion.CHANGEPCTDAY.toFixed(2),
+            
+            
+            //<<<
+            actualizado = new Date(datos_conversion.LASTUPDATE * 1000).toLocaleDateString('es-Mx');
+            //>>>
+
+
+        // construir el template
+        let template_HTML = `
+            <div class="card bg-warning">
+                <div class="card-body text-light">
+                    <h2 class="card-title">Resultado:</h2>
+                    <p>El precio de ${datos_conversion.FROMSYMBOL} a moneda ${datos_conversion.TOSYMBOL} es de: $${precio}</p>
+                    <p>Variacion ultimo dia % ${porcentaje}</p>
+                    <p>Ultima actualizacion: ${actualizado}</p>
+                </div>
+            </div>
+        `;
+
+        // Insertar el resultado
+        document.querySelector('#resultado').innerHTML = template_HTML;
     }
 
 }
