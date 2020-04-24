@@ -16,7 +16,12 @@ document.getElementById("buscarBtn").addEventListener("click", (e) => {
     } else {
         console.log("Buscando...");
         eventBrite.obtenerEventos(texto_evento, categoria_seleccionada).then(eventos =>{
-            console.log(eventos);
+            if(eventos.eventos.events.length > 0){
+                ui.limpiar_resultados();
+                ui.mostrar_eventos(eventos.eventos);
+            } else {
+                ui.mostrar_mensaje("No hay resultados", "alert alert-danger mt-4");
+            }
         });
     }
     
