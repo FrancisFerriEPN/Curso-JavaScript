@@ -15,7 +15,9 @@ document.getElementById("buscarBtn").addEventListener("click", (e) => {
         ui.mostrar_mensaje("Escribe algo en el buscador", "alert alert-danger mt-4");
     } else {
         console.log("Buscando...");
-
+        eventBrite.obtenerEventos(texto_evento, categoria_seleccionada).then(eventos =>{
+            console.log(eventos);
+        });
     }
     
 });
