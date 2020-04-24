@@ -11,10 +11,11 @@ document.getElementById("buscarBtn").addEventListener("click", (e) => {
     const categoria_seleccionada = categorias.options[categorias.selectedIndex].value;
     // Revisar que haya algo escrito en el buscador
     if (texto_evento === ""){
-        console.log("No hay nada");
+        // Mostrar mensaje para que imprima algo
+        ui.mostrar_mensaje("Escribe algo en el buscador", "alert alert-danger mt-4");
     } else {
         console.log("Buscando...");
-        
+
     }
     
 });

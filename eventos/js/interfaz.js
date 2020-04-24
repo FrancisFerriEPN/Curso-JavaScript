@@ -26,4 +26,29 @@ class Interfaz {
                 });
             })
     }
+
+    // Metodo para impimir mensajes
+    mostrar_mensaje(mensaje,clases){
+        this.limpiar_mensaje();
+        const div = document.createElement("div");
+        div.classList = clases;
+        // Agregar texto
+        div.appendChild(document.createTextNode(mensaje));
+        // Buscar adre
+        const buscador_div = document.querySelector("#buscador");
+        
+        buscador_div.appendChild(div);
+        // quitar el alert despues de tres segundos
+        setTimeout(() => {
+            this.limpiar_mensaje();
+        },3000);
+    }
+
+    // Desaparece el mensaje en caso de que exita
+    limpiar_mensaje(){
+        const alert = document.querySelector('.alert');
+        if (alert){
+            alert.remove();
+        }
+    }
 }
