@@ -1,16 +1,53 @@
-const url = "https://jsonplaceholder.typicode.com/todos";
-
-async function leer_todos(){
-    // ESperar la respuesta
-    const respuesta = await fetch (url);
-
-    // Procede cuando la respuesta este hecha
-    const datos = await respuesta.json();
-    return datos;
+const cliente = {
+    nombre: "Alejandra",
+    tipo : "Premium"
 }
 
-// Muestra un promise
-console.log(leer_todos());
+// Forma tipica
+let nombre = cliente.nombre,
+    tipo = cliente.tipo;
+nombre = "Pedro";
+tipo = "Gold";
 
-leer_todos()
-    .then(usurios => console.log(usurios));
+
+// nueva forma
+// Gracias a esta notacion se evita lo avalores anteriores
+({nombre, tipo} = cliente);
+console.log(nombre);
+console.log(tipo);
+
+//
+const cliente1 = {
+    tipo:"Premium",
+    nombre:"Antonio",
+    datos:{
+        ubicacion:{
+            ciudad:"Jalisco",
+            pais: "Mexico"
+        },
+        cuenta: {
+            desde: "10-12-2012",
+            saldo: 4000
+        }
+    }
+};
+let {datos: {ubicacion}} = cliente1;
+console.log(ubicacion);
+console.log(ubicacion.ciudad);
+console.log(ubicacion.pais);
+
+
+let {datos: {cuenta}} = cliente1;
+console.log(cuenta.desde);
+console.log(cuenta.saldo);
+
+//
+const cliente3 = {
+    nombre:"Pedro",
+    tipo:"Premium",
+};
+
+({nombre, tipo="Basico", saldo=0} = cliente3);
+console.log(nombre);
+console.log(tipo);
+console.log(saldo);
