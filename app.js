@@ -1,76 +1,38 @@
+// Symbol
 
-// Forma vieja
-// Destructuring forma anterior
-function reservacion(completo, opciones){
-    let {metodo_pago, cantidad, dias} = opciones;
- /* 
-    
-    //<<<
-    // Se obtiene las opciones o un objeto
-    opciones = opciones || {};
-    //>>>
-    console.log(opciones);
+// No se necesita la palabra new por qu son primitivos de JavaScript
+const simbolo = Symbol();
+const simbolo2 = Symbol("Descripccion aqui");
+
+// Los simbolos son unicos en la ejecucion de JavaScipt 
+console.log(Symbol() == Symbol());
 
 
-    let metodo_pago = opciones.metodo_pago,
-        cantidad = opciones.cantidad,
-        dias = opciones.dias; */
+console.log(typeof simbolo);
+console.log(simbolo);
+console.log(simbolo2);
 
-    console.log(metodo_pago);
-    console.log(cantidad);
-    console.log(dias);
-    
+let nombre = Symbol();
+let apellido = Symbol();
+
+let persona = {};
+persona.nombre = "Francis";
+// Un Symbol se agrega de la siguiente manera
+persona[nombre] = "Juan";
+persona[apellido] = "De la torre";
+persona.saldo = 100;
+persona.tipo_cliento = "Normal";
+
+console.log(persona);
+
+
+// Se accede all valor del Symbol de la siguiente manera
+console.log(persona.nombre);
+console.log(persona[nombre]);
+
+
+// Los Symbol no pueden ser iterados n se puede acceder con for
+console.log("\nSolamente imprime los valores del objeto no Symbol");
+for (let i in persona){
+    console.log(`${i}: ${persona[i]}`);
 }
-
-//
-reservacion(
-    true, {
-        metodo_pago:"trajetaa de credito",
-        /* La funcion obtiene undefinied
-        cantidad: 2000,
-        dias:3
-        */
-       cantidad: 2000,
-       dias:3
-    }
-);
-
-
-// Nueva forma
-function reservacion2(completo,
-        {
-        metodo_pago = "efectivo",
-        cantidad = 0,
-        dias = 0
-        } = {}
-    ) 
-    {
-        // El uerpo de la funcion empieza aqui
-        if (completo){
-            console.log("Proceder a reservar");
-            
-        } else {
-            console.log("Abandonar");
-        }
-        console.log(metodo_pago);
-        console.log(cantidad);
-        console.log(dias);
-}
-
-//
-reservacion2(
-    false
-);
-
-reservacion2(
-    false, {}
-);
-
-reservacion2(
-    true, 
-    {
-        metodo_pago: "tarjeta",
-        cantidad:5000,
-        dias:5
-    }
-);
