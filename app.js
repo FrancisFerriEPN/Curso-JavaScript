@@ -1,56 +1,76 @@
 
-const ciudades =["Londres","New York","Madrid","Paris"];
-
-const [
-    primera_ciudad,
-    segunda_ciudad
-] = ciudades; 
-
-console.log(primera_ciudad);
-console.log(segunda_ciudad);
-
-
-const [,,ciudad,paris] = ciudades;
-console.log(paris);
-console.log(ciudad);
+// Forma vieja
+// Destructuring forma anterior
+function reservacion(completo, opciones){
+    let {metodo_pago, cantidad, dias} = opciones;
+ /* 
+    
+    //<<<
+    // Se obtiene las opciones o un objeto
+    opciones = opciones || {};
+    //>>>
+    console.log(opciones);
 
 
-// cuidadoen con los elementos a lo que accedes
-const ciudades =["Londres","New York","Madrid","Paris",{idioma:"Ingles"}];
+    let metodo_pago = opciones.metodo_pago,
+        cantidad = opciones.cantidad,
+        dias = opciones.dias; */
 
-console.log(ciudades);
-[idioma] = ciudades;
-console.log(idioma);
-
-
-// Esta sintaxis es mu eficaz para tratar objetos, arreglos no
-
-const cliente = {
-    tipo:"Premium",
-    slado: 3000,
-    datos:{
-        nombre: "Pedro",
-        apellido: "Perez",
-        residencia: {
-            ciudad: "Mexico"
-        }
-    },
-    movimientos: ['12-03-2018', '12-03-2017', '12-03-2016']
+    console.log(metodo_pago);
+    console.log(cantidad);
+    console.log(dias);
+    
 }
 
+//
+reservacion(
+    true, {
+        metodo_pago:"trajetaa de credito",
+        /* La funcion obtiene undefinied
+        cantidad: 2000,
+        dias:3
+        */
+       cantidad: 2000,
+       dias:3
+    }
+);
 
-//<<<
 
-// Tienes que especiicar el nombre de la varable
-let {
-    datos,
-    datos:{residencia},
-    tipo,
-    movimientos: [,dos]
-} = cliente;
-console.log(residencia);
-console.log(tipo);
-console.log(datos);
-console.log(dos);
+// Nueva forma
+function reservacion2(completo,
+        {
+        metodo_pago = "efectivo",
+        cantidad = 0,
+        dias = 0
+        } = {}
+    ) 
+    {
+        // El uerpo de la funcion empieza aqui
+        if (completo){
+            console.log("Proceder a reservar");
+            
+        } else {
+            console.log("Abandonar");
+        }
+        console.log(metodo_pago);
+        console.log(cantidad);
+        console.log(dias);
+}
 
-//>>>
+//
+reservacion2(
+    false
+);
+
+reservacion2(
+    false, {}
+);
+
+reservacion2(
+    true, 
+    {
+        metodo_pago: "tarjeta",
+        cantidad:5000,
+        dias:5
+    }
+);
