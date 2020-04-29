@@ -1,50 +1,55 @@
-let carrito = new Set();
+// Maps
+let cliente = new Map();
+console.log(cliente);
 
+cliente.set('nombre','Francis');
+cliente.set('tipo','Premium');
+cliente.set('saldo',3000);
+console.log(cliente);
 
-carrito.add("Camisa");
-carrito.add("Disco #1");
-carrito.add("Disco #2");
-carrito.add("Disco #3");
+// Aceeder a los valores
+console.log(cliente.get("nombre"));
+console.log(cliente.get("tipo"));
+console.log(cliente.get("saldo"));
 
-// <<<
-// El set no permite elementos duplicados
-carrito.add("Disco #2");
-//>>>
+// Metodos para maps
+console.log(cliente.size);
+console.log(cliente.has("tipo"));
+console.log(cliente.has("apellido"));
 
-console.log(carrito);
-console.log(carrito.size);
+// Borrar un elemento del MAP
+cliente.delete("nombre");
+console.log(cliente.has("nombre"));
+console.log(cliente.size);
 
-let numeros = new Set([1,2,3,4,5,6,7,1,2,3,4]);
-console.log(numeros);
-console.log(numeros.size);
+// Limpiar el MAP
+cliente.clear();
+console.log(cliente);
 
-//<<<
+// Poner valores predetyerminados en el MAP
+const paciente = new Map(
+    [["nombre", "paciente"],
+    ["habitacion", "No definido"]
+    ]
+);
 
-// comprobar si un valor existe
-console.log(carrito.has("Camisa"));
-console.log(carrito.has("Guitarra"));
+console.log(paciente);
+paciente.set("nombre","Antonio");
+console.log(paciente);
+paciente.set("habitacion",400);
+paciente.set("habitacion",500);
+console.log(paciente);
 
-// borrar elemento
-carrito.delete("Camisa");
-console.log(carrito);
-
-// Iterar
-carrito.forEach(producto => {
-    console.log(producto);
+// Recorrer con forEach
+// Obtiene los valores directamente
+paciente.forEach(datos => {
+    console.log(datos);
+    
 });
 
-// No tienen llave por eso devuelven cosas como
-// Producto: Disco #1 Posicion:Disco #1
-// En el set la llave y el valo son iguales
-carrito.forEach((producto,index) => {
-    console.log(`Producto: ${producto} Posicion:${index}`);
+// Obtiene tambien el nombre de la llave 
+// Obtiene los valores directamente
+paciente.forEach((dato, index) => {
+    console.log(`Llave:${index} - Dato:${dato}`);
+    
 });
-
-// Convertir un set a un arreglo
-const arreglo_carrito  = [...carrito];
-console.log(arreglo_carrito);
-
-// limpiar Set
-carrito.clear();
-console.log(carrito);
-//>>>
