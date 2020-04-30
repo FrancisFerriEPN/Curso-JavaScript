@@ -14,7 +14,9 @@ buscador.addEventListener("input", () => {
    if(buscador.value.length > 5){
         // Buscar en la API
         ui.obtener_sugerencias(buscador.value);
-   }
+   } else {
+    ui.mostrar_establecimientos();
+}
 });
 
 //>>>

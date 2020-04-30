@@ -69,15 +69,17 @@ class UI {
                 //Obtener los datos
                 const resultado = datos.respuesta_json.results;
                 // Enviar el JSON y la busqueda para el filtrado
-                this.filtrar_sugeremcias(resultado, busqueda);
+                this.filtrar_sugerencias(resultado, busqueda);
             });
     }
 
     // filtar las sugerencas en base al input
-    filtrar_sugeremcias(resultados, consulta){
+    filtrar_sugerencias(resultados, busqueda){
         // Filtrar con .filter
-        
-        // mostrar los pines
+        const filtro = resultados.filter(elemento => elemento.calle.indexOf(busqueda) !== -1);
+        console.log(filtro);
 
+        // mostrar los pines
+        this.mostrar_pines(filtro);
     }
 }
