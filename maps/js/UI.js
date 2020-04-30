@@ -2,9 +2,11 @@ class UI {
     constructor() {
         // Instanciar la API
         this.api = new API();
+
+        // Crear llos markers con layer group
+        this.markers = new L.LayerGroup();
          // Iniciar el mapa
          this.mapa = this.inicializarMapa();
-
     }
 
     inicializarMapa() {
@@ -31,6 +33,24 @@ class UI {
     }
 
     mostrar_pines(datos){
-        console.log(datos);
+        // Limpiar los markers
+        this.markers.clearLayers();
+
+        // recorrer establecimienos
+        datos.forEach(dato => {
+            // Aplicamos un destructuring para extraer la informacion
+            
+            //<<<
+            const {latitude, longitude, calle, regular, premium} = dato;
+            //>>>
+
+            // agregar el PIN
+            const marker = new L.marker([
+                parseFloat(latitude),
+                parseFloat(longitude)
+            ]);
+            this.markers.addLayer(marker);
+        });
+        this.markers.addTo(this.mapa);
     }
 }
