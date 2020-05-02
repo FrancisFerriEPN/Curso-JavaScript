@@ -1,4 +1,5 @@
-import * as UI from "./interfaz.js"
+import {API} from "./api.js";
+import * as UI from "./interfaz.js";
 UI.formulario_buscar.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -18,8 +19,11 @@ UI.formulario_buscar.addEventListener('submit', (e) => {
         },3000);
     } else {
         // El formulario esta completo, realizar consulta a la API
-        console.log(artista);
-        console.log(cancion);
+        const api = new API(artista, cancion);
+        api.consultar_API()
+            .then(data => {
+                console.log(data);
+            });
     }
 
     /* 
