@@ -4,11 +4,23 @@ const comprar_boleto = (function(){
     let evento = "Conferencia JS 2020";
     let precio = 200;
 
+    //<<<
+    const adquirir_boleto = () =>{
+        const elemento = document.createElement('p');
+        elemento.textContent = `Creando un evento para ${evento}`;
+        document.querySelector("#app").appendChild(elemento);
+    }
+    //>>>
+
     // publico
     return {
+
+        //<<<
         mostar_boleto: function () {
-            console.log(evento);
+            adquirir_boleto();
         },
+        //>>>
+
         mostar_precio: function(){
             console.log(precio);
         }
