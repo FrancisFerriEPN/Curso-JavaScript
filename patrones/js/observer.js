@@ -9,7 +9,7 @@ let observer = {
         //>>>
     },
     cancelar_ofertas: function(callback){
-        for(let i = 0; i < this.subscribers; i++){
+        for(let i = 0; i < this.subscribers.length; i++){
             if (this.subscribers[i] === callback){
                 
                 //<<<
@@ -22,7 +22,7 @@ let observer = {
     },
     
     publicar_oferta: function(oferta){
-        for(let i = 0; i < this.subscribers; i++){
+        for(let i = 0; i < this.subscribers.length; i++){
             if (typeof this.subscribers[i] === "function"){
 
                 //<<<
@@ -43,6 +43,7 @@ let observer = {
     }
 }
 
+
 // Vendedores
 const udemy = {
     nuevo_curso: function () {
@@ -61,3 +62,28 @@ const facebook = {
 // Crear los publicadores
 observer.crear(udemy);
 observer.crear(facebook);
+
+const juan = {
+    compartir: function(oferta){
+        console.log("Juan Dice:Excelente oferta! "+ oferta);
+    }
+};
+
+const karen = {
+    interesa: function(oferta){
+        console.log("Karen Dice: Me innteresa la oferta de "+ oferta);
+    }
+}
+
+//<<<
+udemy.obtener_ofertas(juan.compartir);
+//>>>
+
+udemy.obtener_ofertas(karen.interesa);
+udemy.nuevo_curso();
+udemy.cancelar_ofertas(karen.interesa);
+udemy.nuevo_curso();
+
+facebook.obtener_ofertas(karen.interesa);
+facebook.obtener_ofertas(juan.compartir);
+facebook.nuevo_anuncio();
