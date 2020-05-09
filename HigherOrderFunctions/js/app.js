@@ -156,7 +156,7 @@ console.log(resultado); */
 // MAP permite crear arreglos con return 
 // Es decir map te retorna un resultado
 
-let resultado  = autos.map( auto => {
+/* let resultado  = autos.map( auto => {
 	return auto;
 });
 console.log(resultado);
@@ -171,7 +171,7 @@ resultado  = autos.map( auto => {
 		return auto;
 	}
 });
-
+ */
 
 /* 0: {marca: "BMW", modelo: "Serie 3", year: 2012, precio: 30000, puertas: 4, …}
 1: undefined
@@ -183,12 +183,33 @@ resultado  = autos.map( auto => {
 7: undefined
 8: undefined */
 //>>>
+//console.log(resultado);
+
+// filter
+let resultado = autos.filter(auto => {
+	return auto.marca === "BMW";
+});
+
+resultado = autos.filter(auto =>  auto.marca !== "BMW");
+
+resultado = autos.filter(auto =>  auto.color === "Rojo");
 
 
+resultado = autos.filter(auto =>  auto.year === 2018);
 
+resultado = autos.filter(auto =>  auto.year > 2015);
+
+resultado = autos.filter(auto =>  auto.precio > 50000);
+
+resultado = autos.filter(auto =>  auto.puertas === 2);
+
+resultado = autos.filter(auto =>  auto.transmision === "manual");
+
+resultado = autos.filter(auto =>  auto.year >= 2015 && auto.year <= 2017);
+
+resultado = autos.filter(auto =>  auto.year >= 2016 && auto.marca === "BMW");
 
 console.log(resultado);
-// filter
 
 // find
 
