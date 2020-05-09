@@ -124,28 +124,70 @@ const autos = [
 	{ marca: 'Audi', modelo: 'A4', year: 2016, precio: 30000, puertas: 4, color: 'Azul', transmision: 'automatico' }
 ];
 
-for (let i = 0; i < autos.length; i++){
+/* for (let i = 0; i < autos.length; i++){
 	if (autos[i].color === "Negro"){
 		console.log(autos[i]);
 	}
-}
+} */
 //<<<
 //console.table(autos);
 //>>>
 
 // forEach
 
-autos.forEach( auto => console.log(auto));
+/* autos.forEach( auto => console.log(auto)); */
 
-let resultado = [];
+/* let resultado = [];
 autos.forEach( auto => {
 	if (auto.color === "Rojo"){
 		resultado.push[auto];
 	}
 });
-console.log(resultado);
+console.log(resultado); */
+
+// For no crea arreglos con return
+/* let resultado = autos.forEach( auto => {
+	return auto;
+});
+console.log(resultado); */
+
 // map
 
+// MAP permite crear arreglos con return 
+// Es decir map te retorna un resultado
+
+let resultado  = autos.map( auto => {
+	return auto;
+});
+console.log(resultado);
+
+resultado  = autos.map( auto => auto);
+console.log(resultado);
+
+
+//<<<
+resultado  = autos.map( auto => {
+	if(auto.marca === "BMW"){
+		return auto;
+	}
+});
+
+
+/* 0: {marca: "BMW", modelo: "Serie 3", year: 2012, precio: 30000, puertas: 4, …}
+1: undefined
+2: undefined
+3: undefined
+4: {marca: "BMW", modelo: "Serie 5", year: 2016, precio: 70000, puertas: 4, …}
+5: undefined
+6: undefined
+7: undefined
+8: undefined */
+//>>>
+
+
+
+
+console.log(resultado);
 // filter
 
 // find
