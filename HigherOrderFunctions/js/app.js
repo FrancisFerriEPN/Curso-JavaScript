@@ -217,13 +217,25 @@ console.log(resultado); */
 // Te retorna el primer elemento que encuentre en el arreglo
 
 // Es mejopr utilizarlo cunado el codigo es unico
-let resultado = autos.find(auto => auto.marca === "BMW");
+/* let resultado = autos.find(auto => auto.marca === "BMW");
 console.log(resultado);
 
 resultado = autos.find(auto => auto.modelo === "Mustang");
-console.log(resultado);
+console.log(resultado); */
 
 // reduce
+// Toma todos los valores y retorna un valor unico
+
+// reduce((total, item) => {}, start)
+let resultado = autos.reduce((total, auto) => total + auto.precio, 0);
+
+console.log(resultado);
+const numeros = [1,2,3];
+resultado = numeros.reduce((total, numero) => total + numero,100);
+console.log(resultado);
+
+resultado = numeros.reduce((total, numero) => total * numero, 1);
+console.log(resultado);
 
 // some
 
