@@ -186,7 +186,7 @@ resultado  = autos.map( auto => {
 //console.log(resultado);
 
 // filter
-let resultado = autos.filter(auto => {
+/* let resultado = autos.filter(auto => {
 	return auto.marca === "BMW";
 });
 
@@ -209,9 +209,19 @@ resultado = autos.filter(auto =>  auto.year >= 2015 && auto.year <= 2017);
 
 resultado = autos.filter(auto =>  auto.year >= 2016 && auto.marca === "BMW");
 
-console.log(resultado);
+console.log(resultado); */
+
 
 // find
+
+// Te retorna el primer elemento que encuentre en el arreglo
+
+// Es mejopr utilizarlo cunado el codigo es unico
+let resultado = autos.find(auto => auto.marca === "BMW");
+console.log(resultado);
+
+resultado = autos.find(auto => auto.modelo === "Mustang");
+console.log(resultado);
 
 // reduce
 
