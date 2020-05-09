@@ -135,6 +135,15 @@ for (let i = 0; i < autos.length; i++){
 
 // forEach
 
+autos.forEach( auto => console.log(auto));
+
+let resultado = [];
+autos.forEach( auto => {
+	if (auto.color === "Rojo"){
+		resultado.push[auto];
+	}
+});
+console.log(resultado);
 // map
 
 // filter
