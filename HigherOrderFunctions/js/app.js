@@ -227,7 +227,7 @@ console.log(resultado); */
 // Toma todos los valores y retorna un valor unico
 
 // reduce((total, item) => {}, start)
-let resultado = autos.reduce((total, auto) => total + auto.precio, 0);
+/* let resultado = autos.reduce((total, auto) => total + auto.precio, 0);
 
 console.log(resultado);
 const numeros = [1,2,3];
@@ -235,8 +235,15 @@ resultado = numeros.reduce((total, numero) => total + numero,100);
 console.log(resultado);
 
 resultado = numeros.reduce((total, numero) => total * numero, 1);
-console.log(resultado);
+console.log(resultado); */
 
 // some
+
+// Si exixte o no existe
+let resultado = autos.some(auto => auto.marca === "BMW");
+resultado = autos.some(auto => auto.marca === "Ferrari");
+resultado = autos.some(auto => auto.precio > 1000000);
+console.log(resultado);
+
 
 
