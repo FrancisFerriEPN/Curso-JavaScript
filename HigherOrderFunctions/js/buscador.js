@@ -138,13 +138,38 @@ function obtener_autos () {
 }
 
 
-// Event luistemer
+
+// Datos para la busqueda
+let datos_busqueda = {
+    marca: '',
+    year: '',
+    minimo: '',
+    maximo: '',
+    puertas: '',
+    transmision: '',
+    color: ''
+};
+
+
+
+
+// Event listener DOM Loaded
 const autos = obtener_autos();
 
 document.addEventListener("DOMContentLoaded", ()=>{
     mostrar_autos(autos);
 });
 
+// Event listener par el formulario
+const marca = document.querySelector("#marca");
+marca.addEventListener('input', e => {
+    datos_busqueda.marca = e.target.value;
+    // Si utilizas function puedes utilizar this.value. Es extraño pero es algo propio del codigo
+
+    // mandar a llamar una funcion de filtrar autos
+    filtrar_autos();
+
+});
 function mostrar_autos(autos){
 
     // Leer el elemento resultado
@@ -157,4 +182,8 @@ function mostrar_autos(autos){
         `;
         contenedor.appendChild(auto_html);
     });
+}
+
+function filtrar_autos(){
+    console.log("Filtrar autos");
 }
