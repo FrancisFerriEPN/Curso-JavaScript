@@ -207,16 +207,21 @@ color.addEventListener('input', e => {
     filtrar_autos();
 });
 
-function mostrar_autos(autos){
-
+function limpiar_html(){
     // Leer el elemento resultado
     const contenedor = document.querySelector("#resultado");
 
-    // Limpiar los resultados anteriores
     while(contenedor.firstChild){
         contenedor.removeChild(contenedor.firstChild);
     }
+}
 
+function mostrar_autos(autos){
+    // Limpiar los resultados anteriores
+    limpiar_html();
+    // Leer el elemento resultado
+    const contenedor = document.querySelector("#resultado");
+    
     // Cosntruir el html de los autos
     autos.forEach(auto => {
         //console.log(auto);
@@ -229,7 +234,14 @@ function mostrar_autos(autos){
 }
 
 
-// Hogher order functions son funciones qe toman funciones como parametros
+function no_resultado(){
+    limpiar_html();
+    const no_resultado = document.createElement("div");
+    no_resultado.classList.add("alerta", "error");
+    no_resultado.appendChild(document.createTextNode("No hay resulados"));
+    document.querySelector("#resultado").appendChild(no_resultado);
+}
+// Higher order functions son funciones qe toman funciones como parametros
 
 function filtrar_autos(){
 
@@ -240,9 +252,10 @@ function filtrar_autos(){
     if (resultado.length){
         mostrar_autos(resultado);
     } else {
-        alert("No hay resultados");
+        no_resultado();
     }
 }
+
 function filtrar_marca(auto){
     if (datos_busqueda.marca){
         console.log(auto.marca === datos_busqueda.marca);
