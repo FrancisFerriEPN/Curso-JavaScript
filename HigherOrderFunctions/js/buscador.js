@@ -170,10 +170,24 @@ marca.addEventListener('input', e => {
     filtrar_autos();
 
 });
+
+const year = document.querySelector("#year");
+year.addEventListener('input', e => {
+    datos_busqueda.year = e.target.value;
+    filtrar_autos();
+});
+
 function mostrar_autos(autos){
 
     // Leer el elemento resultado
     const contenedor = document.querySelector("#resultado");
+
+    // Limpiar los resultados anteriores
+    while(contenedor.firstChild){
+        contenedor.removeChild(contenedor.firstChild);
+    }
+
+    // Cosntruir el html de los autos
     autos.forEach(auto => {
         //console.log(auto);
         const auto_html = document.createElement("p");
@@ -189,17 +203,31 @@ function mostrar_autos(autos){
 
 function filtrar_autos(){
 
-    
+
 //<<<
     // Con el filter pasa directo los valores sin necesidad de poner nada extra
-    const resultado = obtener_autos().filter(filtrar_marca);
-    console.log(resultado);
+    const resultado = obtener_autos().filter(filtrar_marca).filter(filtrar_year);
+    if (resultado.length){
+        mostrar_autos(resultado);
+    } else {
+        alert("No hay resultados");
+    }
 }
 function filtrar_marca(auto){
     if (datos_busqueda.marca){
+        console.log(auto.marca === datos_busqueda.marca);
         return auto.marca === datos_busqueda.marca;
     } else {
+        return auto;
+    }
+}
 
+function filtrar_year(auto){
+    if (datos_busqueda.year){
+        // Lo estaba guardando como string por eso se catea a nombre
+        return auto.year === Number(datos_busqueda.year);
+    } else {
+        return auto;
     }
 }
 //>>>
