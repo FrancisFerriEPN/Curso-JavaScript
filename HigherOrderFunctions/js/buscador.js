@@ -175,7 +175,7 @@ function mostrar_autos(autos){
     // Leer el elemento resultado
     const contenedor = document.querySelector("#resultado");
     autos.forEach(auto => {
-        console.log(auto);
+        //console.log(auto);
         const auto_html = document.createElement("p");
         auto_html.innerHTML = `
             <p>${auto.marca} - ${auto.modelo} - ${auto.year} - ${auto.puertas} Puertas Transmision: ${auto.transmision} - Precio: ${auto.precio} - Color: ${auto.color}</p>
@@ -184,6 +184,22 @@ function mostrar_autos(autos){
     });
 }
 
+
+// Hogher order functions son funciones qe toman funciones como parametros
+
 function filtrar_autos(){
-    console.log("Filtrar autos");
+
+    
+//<<<
+    // Con el filter pasa directo los valores sin necesidad de poner nada extra
+    const resultado = obtener_autos().filter(filtrar_marca);
+    console.log(resultado);
 }
+function filtrar_marca(auto){
+    if (datos_busqueda.marca){
+        return auto.marca === datos_busqueda.marca;
+    } else {
+
+    }
+}
+//>>>
