@@ -45,10 +45,31 @@ const form = document.querySelector("form"),
 
             // Crear los indicess y campos de la base de datos, createIndex: 3 parametros (nombre, keyPath, opciones)
             object_store.createIndex("mascota", "mascota", {
-                unique: false
+                unique: false,
+
             });
+            object_store.createIndex("cliente", "cliente", {
+                unique: false,
+
+            });
+            object_store.createIndex("telefono", "telefono", {
+                unique: false,
+
+            });
+            object_store.createIndex("fecha", "fecha", {
+                unique: false,
+
+            });
+            object_store.createIndex("hora", "hora", {
+                unique: false,
+
+            });
+            object_store.createIndex("sintomas", "sintomas", {
+                unique: false,
+
+            });
+            console.log("La base de datos esta lista");
         }
         //>>>
-
 
     });
