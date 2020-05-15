@@ -26,8 +26,29 @@ const form = document.querySelector("form"),
             console.log("Todo listo!");
             // Asignar a la base de datos
             DB = crear_DB.result;
-            console.log(DB);
+        }
+
+        // Este metdo solo corre una vez y es ideal para correr el Schema
+        crear_DB.onupgradeneeded = function (e) {
+            // El evento es la misma base de datos
+            let db = e.target.result;
+            
+            
+            // definir el object store, toma dos parametos el nombre de la base de datos y segundo las opciones
+
+            // Esta funcion no se autocompleta
+            let object_store = db.createObjectStore('citas',{
+                // KeyPath es el indice de la base de datos
+                keyPath: 'key',
+                autoIncrement: true
+            });
+
+            // Crear los indicess y campos de la base de datos, createIndex: 3 parametros (nombre, keyPath, opciones)
+            object_store.createIndex("mascota", "mascota", {
+                unique: false
+            });
         }
         //>>>
-        
+
+
     });
