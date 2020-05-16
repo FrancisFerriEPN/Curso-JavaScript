@@ -71,5 +71,21 @@ const form = document.querySelector("form"),
             console.log("La base de datos esta lista");
         }
         //>>>
+        
+        // Cuando el formulario se envia
+        form.addEventListener("submit", agregar_datos);
+
+        function agregar_datos(e){
+            e.preventDefault();
+            const nueva_cita = {
+                mascota : nombre_mascota.value,
+                cliente : nombre_cliente.value,
+                telefono : telefono.value,
+                fecha : fecha.value,
+                hora : hora.value,
+                sintomas : sintomas.value
+            }
+            console.log(nueva_cita);
+        }
 
     });
