@@ -168,7 +168,29 @@ const form = document.querySelector("form"),
         }
 
         function borrar_cita(e){
-            let cita_id = e.target.parentElement.getAttribute("data-cita-id");
+            let cita_id =Number(e.target.parentElement.getAttribute("data-cita-id"));
+             
+            // En indexed DB se utilizan lñas transacciones
+            let transaction = DB.transaction(['citas'], 'readwrite');
+            let objectStore = transaction.objectStore("citas");
+            //console.log(object_store);
+            let peticion = objectStore.delete(cita_id);
+            transaction.oncomplete = () =>{
+                e.target.parentElement.parentElement.removeChild(e.target.parentElement);
+                console.log(`Se elimino la cita con el ID: ${cita_id}`);
+                if (!citas.firstChild){
+                        
+                    // Cuando no hay registros
+                    heading_administra.textContent = 'Agrega citas para comenzar';
+                    let listado = document.createElement("p");
+                    listado. classList.add("text-center");
+                    listado.textContent = "No hay registros";
+                    citas.appendChild(listado);
+
+                } else {
+                    heading_administra.textContent ="Adminitra tus citas";
+                }
+            }
         }
 
     });
