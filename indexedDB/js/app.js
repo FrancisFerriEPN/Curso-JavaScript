@@ -138,7 +138,22 @@ const form = document.querySelector("form"),
                     `;
                     //apennd en el padre
                     citas.appendChild(cita_html);
+                    // Consultar los proximos regstros
                     cursor.continue();
+                } else {
+                    if (!citas.firstChild){
+                        
+                        // Cuando no hay registros
+                        heading_administra.textContent = 'Agrega citas para comenzar';
+                        let listado = document.createElement("p");
+                        listado. classList.add("text-center");
+                        listado.textContent = "No hay registros";
+                        citas.appendChild(listado);
+
+                    } else {
+                        heading_administra.textContent ="Adminitra tus citas";
+                    }
+
                 }
             }
         }
