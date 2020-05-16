@@ -85,7 +85,22 @@ const form = document.querySelector("form"),
                 hora : hora.value,
                 sintomas : sintomas.value
             }
-            console.log(nueva_cita);
+            
+            // En indexed DB se utilizan lñas transacciones
+            let transaction = DB.transaction(['citas'], 'readwrite');
+            let object_store = transaction.objectStore("citas");
+            //console.log(object_store);
+            let peticion = object_store.add(nueva_cita);
+            console.log(peticion);
+            peticion.onsuccess = () => {
+                form.reset();
+            }
+            transaction.oncomplete = () => {
+                console.log("Cita agregada");
+            }
+            transaction.onerror = () => {
+                console.log("Hubo un error");
+            }
         }
 
     });
