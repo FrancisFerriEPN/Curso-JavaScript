@@ -19,6 +19,7 @@ const form = document.querySelector("form"),
         // Si hay un errror enviasrlo a la consoiola
         crear_DB.onerror =function() {
             console.log("Hubo un error");
+            
         }
 
         // Si todo eta bine mostratr en consola
@@ -26,6 +27,8 @@ const form = document.querySelector("form"),
             console.log("Todo listo!");
             // Asignar a la base de datos
             DB = crear_DB.result;
+
+            mostrar_citas();
         }
 
         // Este metdo solo corre una vez y es ideal para correr el Schema
@@ -88,9 +91,9 @@ const form = document.querySelector("form"),
             
             // En indexed DB se utilizan lñas transacciones
             let transaction = DB.transaction(['citas'], 'readwrite');
-            let object_store = transaction.objectStore("citas");
+            let objectStore = transaction.objectStore("citas");
             //console.log(object_store);
-            let peticion = object_store.add(nueva_cita);
+            let peticion = objectStore.add(nueva_cita);
             console.log(peticion);
             peticion.onsuccess = () => {
                 form.reset();
@@ -100,6 +103,37 @@ const form = document.querySelector("form"),
             }
             transaction.onerror = () => {
                 console.log("Hubo un error");
+            }
+        }
+
+        function mostrar_citas() {
+            // Eliminar las citas anteriopres
+            while(citas.firstChild){
+                citas.removeChild(citas.firstChild);
+            }
+
+            // Creamos un objectStore
+
+            let objectStore = DB.transaction("citas").objectStore("citas");
+
+            // Esto retorna una peticion
+            objectStore.openCursor().onsuccess = function(e){
+                // Cursor se va a ubicar en el regiustro indicado para acceder a los datos
+                let cursor = e.target.result
+                ;
+                //console.log(cursor);
+                if(cursor){
+                    console.log(cursor.value.mascota);
+                    let cita_html = document.createElement("li");
+                    cita_html.setAttribute('data-cita-id', cursor.value.key);
+                    cita_html.classList.add("list-group-item");
+                    cita_html.innerHTML = `
+                        <p class="font-weight-bold">Mascota: <span class="font-weight-normal">${cursor.value.mascota}</span></p>
+                    `;
+                    //apennd en el padre
+                    citas.appendChild(cita_html);
+                    cursor.continue();
+                }
             }
         }
 
