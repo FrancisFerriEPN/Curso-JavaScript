@@ -136,6 +136,15 @@ const form = document.querySelector("form"),
                         <p class="font-weight-bold">Hora: <span class="font-weight-normal">${cursor.value.hora}</span></p>
                         <p class="font-weight-bold">Sintomas: <span class="font-weight-normal">${cursor.value.sintomas}</span></p>
                     `;
+                    // boton borrar
+                    const boton_borrar = document.createElement("button");
+                    boton_borrar.classList.add("borrar", "btn", "btn-danger");
+                    boton_borrar.innerHTML = '<span aria-hidden="true">x</span> Borrar';
+                    cita_html.appendChild(boton_borrar);
+                    //<<<
+                    boton_borrar.onclick = borrar_cita;
+                    //>>>
+
                     //apennd en el padre
                     citas.appendChild(cita_html);
                     // Consultar los proximos regstros
@@ -156,6 +165,10 @@ const form = document.querySelector("form"),
 
                 }
             }
+        }
+
+        function borrar_cita(e){
+            let cita_id = e.target.parentElement.getAttribute("data-cita-id");
         }
 
     });
