@@ -100,6 +100,7 @@ const form = document.querySelector("form"),
             }
             transaction.oncomplete = () => {
                 console.log("Cita agregada");
+                mostrar_citas();
             }
             transaction.onerror = () => {
                 console.log("Hubo un error");
@@ -129,6 +130,11 @@ const form = document.querySelector("form"),
                     cita_html.classList.add("list-group-item");
                     cita_html.innerHTML = `
                         <p class="font-weight-bold">Mascota: <span class="font-weight-normal">${cursor.value.mascota}</span></p>
+                        <p class="font-weight-bold">Cliente: <span class="font-weight-normal">${cursor.value.cliente}</span></p>
+                        <p class="font-weight-bold">Telefono: <span class="font-weight-normal">${cursor.value.telefono}</span></p>
+                        <p class="font-weight-bold">Fecha: <span class="font-weight-normal">${cursor.value.fecha}</span></p>
+                        <p class="font-weight-bold">Hora: <span class="font-weight-normal">${cursor.value.hora}</span></p>
+                        <p class="font-weight-bold">Sintomas: <span class="font-weight-normal">${cursor.value.sintomas}</span></p>
                     `;
                     //apennd en el padre
                     citas.appendChild(cita_html);
