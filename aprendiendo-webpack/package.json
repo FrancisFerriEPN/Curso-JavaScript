@@ -4,7 +4,8 @@
   "description": "Archivo para aprender webpack",
   "main": "index.js",
   "scripts": {
-    "ejecutar" :"webpack --mode development"
+    "build": "webpack --mode development",
+    "watch": "webpack --w --mode development"
   },
   "keywords": [
     "Francis",
@@ -13,6 +14,13 @@
   "author": "Francis Ferri",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   }
