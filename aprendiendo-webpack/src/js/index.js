@@ -1,4 +1,4 @@
-import '../css/style.css';
+import '../css/style.scss';
 const cliente2 = (nombre_cliente) => nombre_cliente;
 class Cliente {
     constructor(nombre) {
