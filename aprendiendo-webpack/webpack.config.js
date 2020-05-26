@@ -1,8 +1,11 @@
 const path = require('path')
 module.exports = {
-    entry : './src/js/index.js', // Si ienes mas de un archivo de entrada us un arreglo
+    entry : {
+        index: './src/js/index.js', // Si ienes mas de un archivo de entrada us un arreglo
+        nosotros: './src/js/nosotros.js'
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.join(__dirname, '/dist')
     },
     module: {

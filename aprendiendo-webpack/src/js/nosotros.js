@@ -9,4 +9,4 @@ class Cliente {
 const cliente = new Cliente('Juan');
 console.log(cliente);
 
-console.log("Desde el inicio");
+console.log("Desde Nosotros");
