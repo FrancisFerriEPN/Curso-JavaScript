@@ -1,12 +1,12 @@
 import '../css/style.scss';
-const cliente2 = (nombre_cliente) => nombre_cliente;
-class Cliente {
-    constructor(nombre) {
-        this.nombre = nombre;
-    }
-}
 
-const cliente = new Cliente('Juan');
-console.log(cliente);
+const clientes = ["Cliente1", "Cliente2", "Cliente3", "Cliente4", "Cliente5"];
 
-console.log("Desde el inicio");
+let html = '';
+
+clientes.forEach((cliente) => {
+    html += `
+        <li>${cliente}</li>
+    `;
+});
+document.querySelector("#clientes").innerHTML = html;
