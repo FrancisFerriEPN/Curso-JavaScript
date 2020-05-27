@@ -1,8 +1,8 @@
-const path = require('path')
+const path = require('path');
+const HtmlWenpackPlugin = require("html-webpack-plugin");
 module.exports = {
     entry : {
         index: './src/js/index.js', // Si ienes mas de un archivo de entrada us un arreglo
-        nosotros: './src/js/nosotros.js'
     },
     output: {
         filename: '[name].bundle.js',
@@ -49,5 +49,17 @@ module.exports = {
                 }
             }
         }
-    }
+    },
+    plugins : [
+        new HtmlWenpackPlugin({
+            filename: 'index.html',
+            template: 'src/index.html',
+            title: "Login"
+        }),
+        new HtmlWenpackPlugin({
+            filename: 'nosotros.html',
+            template: 'src/nosotros.html',
+            title: "Nosotros"
+        })
+    ]
 }
