@@ -4,10 +4,10 @@ import Header from './componentes/Header'
 function App() {
   return (
     <Fragment>
-        <Header/>
-        <Header/>
-        <Header/>
-        <Header/>
+        <Header
+          titulo = "Cotizador de Prestamos"
+          descripccion = "Utiliza el formulario y obten una cotizacion"
+        />
     </Fragment>
   );
 }

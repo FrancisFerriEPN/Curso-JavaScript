@@ -1,9 +1,17 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 
-function Header() {
-    
+//function Header({titulo}) { // Se puede alicar destructuring
+function Header(props) {
+    console.log(props);
+
+
     return(
-        <h1>Hola Mundo</h1>
+        <Fragment>
+            <h1>{props.titulo}</h1>
+            <p>{1 + 1}</p> 
+            <p>|1 + 1</p>
+            <p>{props.descripcion}</p>
+        </Fragment>
     )
 }
 export default Header
