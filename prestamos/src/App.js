@@ -1,5 +1,6 @@
 import React, { Fragment} from 'react';
 import Header from './componentes/Header'
+import Formulario from './componentes/Formulario'
 
 function App() {
   return (
@@ -8,6 +9,9 @@ function App() {
           titulo = "Cotizador de Prestamos"
           descripccion = "Utiliza el formulario y obten una cotizacion"
         />
+        <div className = "container">
+          <Formulario/>
+        </div>
     </Fragment>
   );
 }
