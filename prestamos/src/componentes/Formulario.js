@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 
-const Formulario = ({cantidad, guardar_cantidad}) => {
+const Formulario = ({cantidad, guardar_cantidad, plazo, guardar_plazo}) => {
 
    
 
     return ( 
         <form>
-            {cantidad}
             <div className="row">
                 <div>
                     <label>Cantidad Prestamo</label>
@@ -15,12 +14,13 @@ const Formulario = ({cantidad, guardar_cantidad}) => {
                         type="number" 
                         placeholder="Ejemplo: 3000" 
                         onChange = {e =>  guardar_cantidad(parseInt(e.target.value))}
-                    />
+                        />
                 </div>
                 <div>
                     <label>Plazo para Pagar</label>
                     <select 
                         className="u-full-width"
+                        onChange = {e =>  guardar_plazo(parseInt(e.target.value))}
                     >
                         <option value="">Seleccionar</option>
                         <option value="3">3 meses</option>
