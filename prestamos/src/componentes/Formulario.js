@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {Fragment, useState} from 'react';
 
 const Formulario = ({cantidad, guardar_cantidad, plazo, guardar_plazo}) => {
 
@@ -11,11 +11,16 @@ const Formulario = ({cantidad, guardar_cantidad, plazo, guardar_plazo}) => {
         // Validar
         if (cantidad === 0 || plazo === ""){
             guardar_error(true);
+            return;
         }
+
+        // ELiminar error previo
+        guardar_error(false);
         // Realizar la cotizacion
    }
 
     return ( 
+    <Fragment>
         <form onSubmit={ calcularPrestamo }>
             <div className="row">
                 <div>
@@ -49,6 +54,9 @@ const Formulario = ({cantidad, guardar_cantidad, plazo, guardar_plazo}) => {
                 </div>
             </div>
     </form>
+    {(error)?  <p className = "error">Todos los campos son obligatorios</p> : null}
+   
+</Fragment>
      );
 }
  
