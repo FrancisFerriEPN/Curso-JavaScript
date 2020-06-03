@@ -1,4 +1,6 @@
 import React, {Fragment, useState} from 'react';
+import {calcular_total} from "../helpers";
+
 
 const Formulario = ({cantidad, guardar_cantidad, plazo, guardar_plazo}) => {
 
@@ -14,9 +16,10 @@ const Formulario = ({cantidad, guardar_cantidad, plazo, guardar_plazo}) => {
             return;
         }
 
-        // ELiminar error previo
+        // Eliminar error previo
         guardar_error(false);
         // Realizar la cotizacion
+        calcular_total(cantidad, plazo);
    }
 
     return ( 
