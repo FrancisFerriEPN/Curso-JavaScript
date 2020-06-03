@@ -2,10 +2,21 @@ import React, {useState} from 'react';
 
 const Formulario = ({cantidad, guardar_cantidad, plazo, guardar_plazo}) => {
 
-   
+    // definir state
+    const [error, guardar_error] = useState(false);
+   // Cuando el usuario hace submit
+   const calcularPrestamo = e => {
+        e.preventDefault();
+
+        // Validar
+        if (cantidad === 0 || plazo === ""){
+            guardar_error(true);
+        }
+        // Realizar la cotizacion
+   }
 
     return ( 
-        <form>
+        <form onSubmit={ calcularPrestamo }>
             <div className="row">
                 <div>
                     <label>Cantidad Prestamo</label>

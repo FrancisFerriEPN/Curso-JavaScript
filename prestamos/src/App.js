@@ -5,7 +5,7 @@ import Formulario from './componentes/Formulario'
 function App() {
    // Definir un state
    const [cantidad, guardar_cantidad] = useState(0);
-   const [plazo, guardar_plazo] = useState(0);
+   const [plazo, guardar_plazo] = useState("");
 
   return (
     <Fragment>
