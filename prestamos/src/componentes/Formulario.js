@@ -19,8 +19,9 @@ const Formulario = ({cantidad, guardar_cantidad, plazo, guardar_plazo}) => {
         // Eliminar error previo
         guardar_error(false);
         // Realizar la cotizacion
-        calcular_total(cantidad, plazo);
-   }
+        const total = calcular_total(cantidad, plazo);
+        console.log(total);
+    }
 
     return ( 
     <Fragment>

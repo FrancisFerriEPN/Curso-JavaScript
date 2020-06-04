@@ -22,4 +22,22 @@ export function calcular_total(cantidad, plazo){
     // 6 = 10%
     // 12 = 15%
     // 24 = 20%
+    let total_plazo = 0;
+    switch (plazo){
+        case 3:
+            total_plazo = cantidad * .05;
+            break;
+        case 6:
+            total_plazo = cantidad * .10;
+            break;
+        case 12:
+            total_plazo = cantidad * .15;
+            break;
+        case 24:
+            total_plazo = cantidad * .20;
+            break;
+        default:
+            break;
+    }
+    return total_plazo + total_cantidad + cantidad;
 }
