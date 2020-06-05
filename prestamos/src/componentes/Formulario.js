@@ -4,7 +4,7 @@ import {calcular_total} from "../helpers";
 
 const Formulario = (props) => {
 
-    const {cantidad, guardar_cantidad, plazo, guardar_plazo, total, guardar_total, guardar_cargando} = props;
+    const {cantidad, guardar_cantidad, plazo, guardar_plazo, guardar_total, guardar_cargando} = props;
     // definir state
     const [error, guardar_error] = useState(false);
    // Cuando el usuario hace submit

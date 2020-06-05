@@ -38,7 +38,6 @@ function App() {
             guardar_cantidad = {guardar_cantidad}
             plazo = {plazo}
             guardar_plazo = {guardar_plazo}
-            total = {total}
             guardar_total = {guardar_total}
             guardar_cargando = {guardar_cargando}
           />
