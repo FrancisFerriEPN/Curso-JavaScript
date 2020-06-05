@@ -14,7 +14,11 @@ function App() {
   if(total === 0){
     componete = <Mensaje />
   } else {
-    componete = <Resultado />
+    componete = <Resultado 
+                  total = {total}
+                  plazo = {plazo}
+                  cantidad = {cantidad}
+                />
   }
 
   return (
