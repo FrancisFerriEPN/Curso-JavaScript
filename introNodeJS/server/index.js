@@ -1,12 +1,9 @@
 // Importar Expresss
 const express = require("express");
-
+const routes = require("./routes");
 // Configurar Express
 const app = express();
 
 // use responde a todo, get responde uicamente a peticiones get
-app.get("/", (req, res) => {
-    console.log(req);
-    res.send("Hola Mundo en NodeJs");
-});
+app.use("/", routes())
 app.listen(3000);
