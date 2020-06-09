@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Aprendiendo NodeJS Express y Sequelize",
   "main": "index.js",
+
+  
+  "consideraciones" : "Nodemon detecta cambios y recarga el servidor El segundo argumento es donde esta el directorio, si el archivo se llama diferene a index.js debes especificar el nombre",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
+    "start" : "nodemon server" 
   },
   "author": "Francis Ferri",
   "license": "ISC",
