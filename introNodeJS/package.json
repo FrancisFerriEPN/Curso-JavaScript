@@ -3,18 +3,16 @@
   "version": "1.0.0",
   "description": "Aprendiendo NodeJS Express y Sequelize",
   "main": "index.js",
-
-  
-  "consideraciones" : "Nodemon detecta cambios y recarga el servidor El segundo argumento es donde esta el directorio, si el archivo se llama diferene a index.js debes especificar el nombre",
+  "consideraciones": "Nodemon detecta cambios y recarga el servidor El segundo argumento es donde esta el directorio, si el archivo se llama diferene a index.js debes especificar el nombre",
   "scripts": {
-    
-    "start" : "nodemon server" 
+    "start": "nodemon server"
   },
   "author": "Francis Ferri",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "pug": "^3.0.0"
   }
 }

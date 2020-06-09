@@ -3,13 +3,11 @@ const router = express.Router();
 
 module.exports = function () {
     router.get("/", (req, res) => {
-        console.log(req);
-        res.send("Inicio");
+        res.render("index");
     });
     
     router.get("/nosotros", (req, res) => {
-        console.log(req);
-        res.send("Nosotros");
+        res.render("nosotros");
     });
 
     return router;
