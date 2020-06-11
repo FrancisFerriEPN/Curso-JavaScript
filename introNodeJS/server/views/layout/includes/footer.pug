@@ -1,0 +1,15 @@
+footer.container.py-5
+    .row
+        .col-md-6
+             nav.nav.justify-content-center.justify-content-md-start
+                //-
+                    No te olvides del espacio es mu importante ponerlo bien
+                a(href="/nosotros", class="nav-link") Nosotros
+                a(href="/viajes", class="nav-link") Viajes
+                a(href="/tetimoniales", class="nav-link") Testimoniales
+        .col-md-6
+        p.copyright.text-center.text-md-right
+            | Todos los Derechos Reservados 
+            //-
+                Tienes que utilizar el igual para que lo tome cmo una variable, caso contrario piensa que es codigo estatico e imprimiria el texto
+            span= fecha_actual
