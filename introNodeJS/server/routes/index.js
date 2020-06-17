@@ -13,22 +13,28 @@ module.exports = function () {
             pagina: "Sobre Nosotros"
         });
     });
-
+    
     router.get("/viajes", (req, res) => {
         Viaje.findAll()
-            .then( viajes => res.render("viajes", {
-                pagina: "Proximos Viajes",
-                viajes
-            }))
-            .catch(error => console.log(error))
+        .then( viajes => res.render("viajes", {
+            pagina: "Proximos Viajes",
+            viajes
+        }))
+        .catch(error => console.log(error))
     });
-
+    
     router.get("/viajes/:id", (req, res) => {
         Viaje.findByPk(req.params.id)
-            .then(viaje => res.render("viaje", {
-                viaje
-            }))
-            .catch (error => console.log(error));
+        .then(viaje => res.render("viaje", {
+            viaje
+        }))
+        .catch (error => console.log(error));
+    });
+    
+    router.get("/testimoniales", (req, res) => {
+        res.render("testimoniales", {
+            pagina: "Testimoniales"
+        });
     });
 
     return router;
