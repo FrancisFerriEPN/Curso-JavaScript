@@ -37,5 +37,30 @@ module.exports = function () {
         });
     });
 
+    // Cuando se llena el formulario
+    router.post("/testimoniales",(req, res)=>{
+        
+        //<<< QUE BUENA MANERA DE REVISAR ERRORES
+        // validar que todos los campos esten llenos
+        let{nombre, correo, mensaje} = req.body;
+        let errores = [];
+        if (!nombre){
+            errores.push("mensaje", "Agrega tu Nombre")
+        }
+        if (!correo){
+            errores.push("mensaje", "Agrega tu Correo")
+        }
+        if (!mensaje){
+            errores.push("mensaje", "Agrega tu Mensaje")
+        }
+
+        // revisar por errores
+        if(errores.length > 0){
+            // muestra la vista con errores
+        } else {
+            // almacenarlo en la base de datos
+        }
+
+    })
     return router;
 }
