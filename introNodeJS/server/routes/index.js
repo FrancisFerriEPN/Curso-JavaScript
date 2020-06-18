@@ -45,18 +45,26 @@ module.exports = function () {
         let{nombre, correo, mensaje} = req.body;
         let errores = [];
         if (!nombre){
-            errores.push("mensaje", "Agrega tu Nombre")
+            errores.push('mensaje', "Agrega tu Nombre")
         }
         if (!correo){
-            errores.push("mensaje", "Agrega tu Correo")
+            errores.push('mensaje', "Agrega tu Correo")
         }
         if (!mensaje){
-            errores.push("mensaje", "Agrega tu Mensaje")
+            errores.push('mensaje', "Agrega tu Mensaje")
         }
 
         // revisar por errores
         if(errores.length > 0){
+
+            // SE MANDA A RENDERIZAR LA VISTA Y SE LE PASA A TESTIMONIALES LAS VARIABLES
             // muestra la vista con errores
+            res.render("testimoniales", {
+                errores,
+                nombre,
+                correo,
+                mensaje
+            })
         } else {
             // almacenarlo en la base de datos
         }
