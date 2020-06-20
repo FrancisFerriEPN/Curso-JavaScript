@@ -6,15 +6,34 @@ const Testimonial = require("../models/Testimoniales");
 
 module.exports = function () {
     router.get("/", (req, res) => {
-        Viaje.findAll({
+
+
+
+        //<<<
+        // MUY IMPORTANTE
+        const promises = [];
+        promises.push( Viaje.findAll({
+                limit: 3
+        }))
+
+        promises.push( Testimonial.findAll({
             limit: 3
-        })
-            .then( viajes => res.render("index", {
-                pagina: "Proximos Viajes",
-                clase: "home",
-                viajes
-            }))
-            .catch(error => console.log(error))
+        }))
+       
+        // Pasar el promise y ejcutarlo
+        const resultado = Promise.all(promises);
+
+        resultado.then( resultado => res.render("index", {
+            pagina: "Proximos Viajes",
+            clase: "home",
+            viajes : resultado[0],
+            testimoniales: resultado[1]
+        }))
+        .catch(error => console.log(error))
+        //>>>
+
+
+        
     });
     
     router.get("/nosotros", (req, res) => {
