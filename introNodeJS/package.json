@@ -5,7 +5,8 @@
   "main": "index.js",
   "consideraciones": "Nodemon detecta cambios y recarga el servidor El segundo argumento es donde esta el directorio, si el archivo se llama diferene a index.js debes especificar el nombre",
   "scripts": {
-    "start": "nodemon server"
+    "dev": "nodemon server",
+    "start": "node server"
   },
   "author": "Francis Ferri",
   "license": "ISC",
