@@ -1,5 +1,7 @@
 const express = require("express");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const ruotes = require("./routes");
+const routes = require("./routes");
 
 // Crear el servidor
 const app = express();
@@ -11,6 +13,9 @@ mongoose.connect("mongodb://localhost/veterinaria",{
     useUnifiedTopology: true,
     useFindAndModift: false
 })
+
+//habilitaar routing
+app.use("/", routes())
 
 // puerto y arrancar el servidor
 app.listen(4000, () =>{
