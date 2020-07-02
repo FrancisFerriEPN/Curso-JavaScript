@@ -24,7 +24,12 @@ module.exports = function(){
     // para hacer adaptable la url se utilizan los dos puntos
     router.get("/pacientes/:id", 
         pacienteController.obtenerPaciente
-        
     );
+
+    // Actuializar un registro con un ID especifico
+    router.put("/pacientes/:id",
+        pacienteController.actualizarPaciente
+    );
+
     return router;
 }
