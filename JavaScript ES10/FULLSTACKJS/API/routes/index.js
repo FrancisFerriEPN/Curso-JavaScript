@@ -13,5 +13,11 @@ module.exports = function(){
         pacienteController.nuevoCliente
     )
     
+
+    // Obtien todos los registros de pacientes een la base de datps
+    router.get("/pacientes",
+        pacienteController.obtenerPacientes
+    );
+
     return router;
 }

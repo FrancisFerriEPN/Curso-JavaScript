@@ -1,4 +1,5 @@
-const Paciente = require("../models/Paciente")
+const Paciente = require("../models/Paciente");
+const { json } = require("express");
 
 // Cuando se crea un nuevo cliente
 exports.nuevoCliente = async (req, res, next) => {
@@ -8,6 +9,17 @@ exports.nuevoCliente = async (req, res, next) => {
     try {
         await paciente.save();
         res.json({mensaje: "El cliente se agrego correctamente"});
+    } catch (error){
+        console.log(error);
+        next();
+    }
+}
+
+// Obtener todos los pacientes
+exports.obtenerPacientes = async (req, res, next) => {
+    try{
+        const pacientes = await Paciente.find({});
+        res.json(pacientes);
     } catch (error){
         console.log(error);
         next();
