@@ -31,5 +31,10 @@ module.exports = function(){
         pacienteController.actualizarPaciente
     );
 
+    // Eliminar paciente por su ID
+    router.delete("/pacientes/:id",
+        pacienteController.eliminarPaciente
+    )
+
     return router;
 }
