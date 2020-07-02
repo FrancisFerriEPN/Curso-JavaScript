@@ -11,7 +11,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/veterinaria",{
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModift: false
+    useFindAndModify: false
 })
 
 // Habilitar el body-parser

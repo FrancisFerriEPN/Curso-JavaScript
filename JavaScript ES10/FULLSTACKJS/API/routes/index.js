@@ -10,7 +10,7 @@ module.exports = function(){
         console.log("En Home");
     })
     router.post("/pacientes",
-        pacienteController.nuevoCLientte
+        pacienteController.nuevoCliente
     )
     
     return router;
