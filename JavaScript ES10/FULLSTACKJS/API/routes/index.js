@@ -19,5 +19,12 @@ module.exports = function(){
         pacienteController.obtenerPacientes
     );
 
+
+    // Obtiene un pacente en especifico (ID)
+    // para hacer adaptable la url se utilizan los dos puntos
+    router.get("/pacientes/:id", 
+        pacienteController.obtenerPaciente
+        
+    );
     return router;
 }

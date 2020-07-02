@@ -25,3 +25,15 @@ exports.obtenerPacientes = async (req, res, next) => {
         next();
     }
 }
+
+// obytieen un paciente especifico por su id 
+exports.obtenerPaciente = async(req, res, next) =>{
+    try{
+        // Los params son los parametrops definidos en la url
+        // pacientes/1
+        const paciente = await Paciente.findById(req.params.id);
+        res.json(paciente);
+    } catch (error){
+        console.log(error);
+    }
+}
