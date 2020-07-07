@@ -15,7 +15,21 @@ const Pacientes = ({citas}) => {
                     <div className="col-md-8 mx-auto">
                         <div className="list-gropup">
                             {citas.map(cita => (
-                                <h3 className="mb-3">{cita.nombre}</h3>
+                                <a key={cita._id} className="p-5 list-group-item list-group-item-actiom flex-column align-items-start">
+                                    <div className="d-flex w-100 justify-content-between">
+                                        <h3 className="mb-3">{cita.nombre}</h3>
+                                        <small className="fecha-alta">
+                                            {cita.fecha} - {cita.hora}
+                                        </small>
+                                    </div>
+                                    <p className="mb-0">
+                                        {cita.sintomas}
+                                    </p>
+                                    <div className="contacto py-3">
+                                        <p>Dueño: {cita.propietario}</p>
+                                        <p>Telefono: {cita.propietario}</p>
+                                    </div>
+                                </a>
                             ))}
                         </div>
                     </div>
