@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from "react";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 import clienteAxios from "../config/axios";
 
 const NuevaCita = (props) => {
+    console.log(props);
     // Generar state como objeto
     const [cita, guardarCita] = useState({
         nombre : "",
@@ -28,10 +29,10 @@ const NuevaCita = (props) => {
         e.preventDefault();
 
         // enviar lapeticion por Axios
-        clienteAxios.post("/pacientes", {cita})
+        clienteAxios.post("/pacientes", cita)
         .then(respuesta => {
             console.log(respuesta);
-
+            props.guardarConsultar(true);
             // Redireccionar
             props.history.push("/");
         })
@@ -47,7 +48,7 @@ const NuevaCita = (props) => {
 
                     <div className="col-md-8 mx-auto">
                     <form 
-                        onSubmit = {crearNuevaCita} 
+                        onSubmit={crearNuevaCita} 
                         className="bg-white p-5 bordered">
                         <div className="form-group">
                             <label htmlFor="nombre">Nombre Mascota</label>
@@ -127,4 +128,4 @@ const NuevaCita = (props) => {
      );
 }
  
-export default NuevaCita;
+export default withRouter(NuevaCita);
