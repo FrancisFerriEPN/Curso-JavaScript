@@ -10,7 +10,7 @@ function crearVentana() {
         minHeight: 600,
         minWidth: 800,
         center: true,
-        show: false
+        //show: false
     });
 
     // Cuando la aplicacion es cerrada
