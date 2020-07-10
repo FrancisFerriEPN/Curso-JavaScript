@@ -7,5 +7,8 @@
     "start": "electron ."
   },
   "author": "Francis Ferri",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^9.1.0"
+  }
 }
